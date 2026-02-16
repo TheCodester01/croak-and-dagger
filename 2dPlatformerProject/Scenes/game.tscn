@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dpxafr8apgf48"]
+
+[ext_resource type="Texture2D" uid="uid://b3pnk02hs7ep1" path="res://Assets/bg_placeholder.png" id="1_ebmjs"]
+
+[node name="Game" type="Node2D" unique_id=1793699421]
+
+[node name="BgPlaceholder" type="Sprite2D" parent="." unique_id=107852741]
+position = Vector2(576.49994, 327)
+scale = Vector2(1.7984374, 1.3640168)
+texture = ExtResource("1_ebmjs")
