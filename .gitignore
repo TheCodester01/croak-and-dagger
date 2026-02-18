@@ -15,3 +15,6 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+2dPlatformerProject/.vscode/settings.json
+2dPlatformerProject/2D-Platformer-Project.csproj.old
+2dPlatformerProject/Assets/Generic Platformer Assets/License.txt
