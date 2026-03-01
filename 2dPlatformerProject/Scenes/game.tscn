@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c74iyy88okafe" path="res://swamp.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://ypf8676ik73o" path="res://player.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://b12vj4onrk1ov" path="res://Scenes/ice.tscn" id="2_wrm1d"]
 
 [node name="Game" type="Node2D" unique_id=1793699421]
 
@@ -9,5 +10,13 @@
 position = Vector2(576, 328)
 scale = Vector2(2, 2)
 
+[node name="Ice" parent="." unique_id=745608814 instance=ExtResource("2_wrm1d")]
+position = Vector2(576, -319)
+
 [node name="Player" parent="." unique_id=1232959386 instance=ExtResource("2_qxrlw")]
 position = Vector2(205, 414)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=134203566]
+limit_left = 0
+limit_right = 1150
+limit_bottom = 648

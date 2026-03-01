@@ -155,8 +155,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yem3p"]
-radius = 24.0
-height = 68.0
+radius = 21.0
+height = 60.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1232959386]
 script = ExtResource("1_efrwb")
