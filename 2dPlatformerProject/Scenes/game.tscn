@@ -32,7 +32,7 @@ rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
 [node name="Player" parent="." unique_id=1232959386 instance=ExtResource("2_qxrlw")]
-position = Vector2(205, 414)
+position = Vector2(201, 414)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=134203566]
 limit_left = 0

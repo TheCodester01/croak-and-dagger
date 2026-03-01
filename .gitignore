@@ -17,3 +17,7 @@ data_*/
 mono_crash.*.json
 2dPlatformerProject/.vscode/settings.json
 2dPlatformerProject/Assets/Generic Platformer Assets/License.txt
+2dPlatformerProject/Properties/launchSettings.json
+2dPlatformerProject/.vs/2D-PLATFORMER-PROJECT/v18/DocumentLayout.backup.json
+2dPlatformerProject/.vs/2D-PLATFORMER-PROJECT/v18/DocumentLayout.json
+2dPlatformerProject/2D-Platformer-Project.csproj.user
