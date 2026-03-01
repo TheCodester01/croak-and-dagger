@@ -34,8 +34,16 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.X = direction.X * Speed;
 
-            if (is_sprinting)
+            if (is_sprinting) 
+			{
                 velocity.X *= SprintMultiplier;
+
+				// Bigger jump if sprinting
+				if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+				{
+					velocity.Y = JumpVelocity * 1.25f;
+				}
+			}
         }
 		else
 		{
