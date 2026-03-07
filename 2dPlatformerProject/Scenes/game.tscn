@@ -15,18 +15,18 @@ scale = Vector2(2, 2)
 [node name="Ice" parent="." unique_id=745608814 instance=ExtResource("2_wrm1d")]
 position = Vector2(576, -319)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=31237010]
+[node name="World Boundaries" type="StaticBody2D" parent="." unique_id=31237010]
 
-[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="StaticBody2D" unique_id=1218207133]
+[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="World Boundaries" unique_id=1218207133]
 position = Vector2(0, 648)
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-[node name="WorldBoundaryLeft" type="CollisionShape2D" parent="StaticBody2D" unique_id=1755164291]
+[node name="WorldBoundaryLeft" type="CollisionShape2D" parent="World Boundaries" unique_id=1755164291]
 position = Vector2(0, 324)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-[node name="WorldBoundaryRight" type="CollisionShape2D" parent="StaticBody2D" unique_id=2135359376]
+[node name="WorldBoundaryRight" type="CollisionShape2D" parent="World Boundaries" unique_id=2135359376]
 position = Vector2(1152, 324)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
