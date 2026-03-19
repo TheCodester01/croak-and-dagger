@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxfpfh58kep6n"
-path="res://.godot/imported/Decor_Brick.png-86f9535e10ac0e7d8597d4b3392b7586.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Platformer/Decor_Brick.png"
-dest_files=["res://.godot/imported/Decor_Brick.png-86f9535e10ac0e7d8597d4b3392b7586.ctex"]
 
 [params]
 

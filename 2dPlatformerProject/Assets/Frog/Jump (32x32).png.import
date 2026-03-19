@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8i4jiofoktwl"
-path="res://.godot/imported/Jump (32x32).png-cafbe43f9be0fdf8dd2fb41eaed5eb63.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Frog/Jump (32x32).png"
-dest_files=["res://.godot/imported/Jump (32x32).png-cafbe43f9be0fdf8dd2fb41eaed5eb63.ctex"]
 
 [params]
 

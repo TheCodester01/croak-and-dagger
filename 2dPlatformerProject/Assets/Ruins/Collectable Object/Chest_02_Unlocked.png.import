@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0o4muuwqj5ua"
-path="res://.godot/imported/Chest_02_Unlocked.png-17dd3f836a51457a7faaabccd1095c62.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Collectable Object/Chest_02_Unlocked.png"
-dest_files=["res://.godot/imported/Chest_02_Unlocked.png-17dd3f836a51457a7faaabccd1095c62.ctex"]
 
 [params]
 

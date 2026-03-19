@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dem4r3wr21ae1"
-path="res://.godot/imported/Wooden_Barrel.png-d4da4726c122ebef136b5ca5688dfc62.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Platformer/Wooden_Barrel.png"
-dest_files=["res://.godot/imported/Wooden_Barrel.png-d4da4726c122ebef136b5ca5688dfc62.ctex"]
 
 [params]
 

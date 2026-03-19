@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7bivr5f2eb7l"
-path="res://.godot/imported/Sign_01.png-2382db4845dc3ba115dda822efa83e5b.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Environment/Sign_01.png"
-dest_files=["res://.godot/imported/Sign_01.png-2382db4845dc3ba115dda822efa83e5b.ctex"]
 
 [params]
 

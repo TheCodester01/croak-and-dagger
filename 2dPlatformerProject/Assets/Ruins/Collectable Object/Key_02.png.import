@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cj8xh1kj65x06"
-path="res://.godot/imported/Key_02.png-ed2ef57a56bb27db35f2831f94f94bcc.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Collectable Object/Key_02.png"
-dest_files=["res://.godot/imported/Key_02.png-ed2ef57a56bb27db35f2831f94f94bcc.ctex"]
 
 [params]
 

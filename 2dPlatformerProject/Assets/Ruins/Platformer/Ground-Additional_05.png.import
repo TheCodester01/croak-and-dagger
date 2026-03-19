@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyks5t0xjpjjn"
-path="res://.godot/imported/Ground-Additional_05.png-702de3d807afb206794a4cb174c7df7f.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Platformer/Ground-Additional_05.png"
-dest_files=["res://.godot/imported/Ground-Additional_05.png-702de3d807afb206794a4cb174c7df7f.ctex"]
 
 [params]
 

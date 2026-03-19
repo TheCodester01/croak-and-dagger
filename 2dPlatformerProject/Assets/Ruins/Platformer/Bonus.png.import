@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://urb4buwvqor0"
-path="res://.godot/imported/Bonus.png-22624d15324c16a10b21375274b2c4b6.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Platformer/Bonus.png"
-dest_files=["res://.godot/imported/Bonus.png-22624d15324c16a10b21375274b2c4b6.ctex"]
 
 [params]
 

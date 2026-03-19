@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2lx02l2lk0rn"
-path="res://.godot/imported/Fall (32x32).png-0c92973b48537370f323228ce296dfa6.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Frog/Fall (32x32).png"
-dest_files=["res://.godot/imported/Fall (32x32).png-0c92973b48537370f323228ce296dfa6.ctex"]
 
 [params]
 

@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmj6tydadk0kd"
-path="res://.godot/imported/Apple.png-068146c65837458fef0d49a85faee001.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Collectable Object/Apple.png"
-dest_files=["res://.godot/imported/Apple.png-068146c65837458fef0d49a85faee001.ctex"]
 
 [params]
 

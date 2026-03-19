@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mm8wibwydqa6"
-path="res://.godot/imported/Ground_08.png-f4f06a94242c3781621cc6854280689a.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Platformer/Ground_08.png"
-dest_files=["res://.godot/imported/Ground_08.png-f4f06a94242c3781621cc6854280689a.ctex"]
 
 [params]
 

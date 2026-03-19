@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jj64lchv2621"
-path="res://.godot/imported/Wooden_Box.png-9439eac918a64c1b033c76d358acf942.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Platformer/Wooden_Box.png"
-dest_files=["res://.godot/imported/Wooden_Box.png-9439eac918a64c1b033c76d358acf942.ctex"]
 
 [params]
 

@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsqu0latinbov"
-path="res://.godot/imported/Bridge_02.png-65b3c7ba33df6c970e5a0cb73b2e8884.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Platformer/Bridge_02.png"
-dest_files=["res://.godot/imported/Bridge_02.png-65b3c7ba33df6c970e5a0cb73b2e8884.ctex"]
 
 [params]
 

@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqxkdfe3ttsn3"
-path="res://.godot/imported/Ladder.png-c4b6d1c282a611ec50ffd32c5a2cd720.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Platformer/Ladder.png"
-dest_files=["res://.godot/imported/Ladder.png-c4b6d1c282a611ec50ffd32c5a2cd720.ctex"]
 
 [params]
 

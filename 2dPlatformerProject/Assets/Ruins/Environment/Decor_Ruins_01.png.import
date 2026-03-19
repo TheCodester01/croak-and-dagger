@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://boddy88m4ymki"
-path="res://.godot/imported/Decor_Ruins_01.png-dedffe4df20aa95716faae8cbc3790b0.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Environment/Decor_Ruins_01.png"
-dest_files=["res://.godot/imported/Decor_Ruins_01.png-dedffe4df20aa95716faae8cbc3790b0.ctex"]
 
 [params]
 

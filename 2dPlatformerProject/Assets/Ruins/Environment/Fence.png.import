@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dp5sfvrdjxxyl"
-path="res://.godot/imported/Fence.png-fb09cf1a40c75bca01ae8cc91d9526cd.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Environment/Fence.png"
-dest_files=["res://.godot/imported/Fence.png-fb09cf1a40c75bca01ae8cc91d9526cd.ctex"]
 
 [params]
 

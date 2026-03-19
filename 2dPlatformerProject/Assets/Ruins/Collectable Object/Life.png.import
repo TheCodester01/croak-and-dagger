@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cypls0y1iwh4l"
-path="res://.godot/imported/Life.png-c8018f1f9662f8a5e8d2c39627feb06d.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Ruins/Collectable Object/Life.png"
-dest_files=["res://.godot/imported/Life.png-c8018f1f9662f8a5e8d2c39627feb06d.ctex"]
 
 [params]
 
