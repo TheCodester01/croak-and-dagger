@@ -17,10 +17,7 @@ scale = Vector2(2, 2)
 [node name="Ice" parent="." unique_id=745608814 instance=ExtResource("2_wrm1d")]
 position = Vector2(576, -319)
 
-[node name="Ruins" parent="." unique_id=1091255237 instance=ExtResource("3_wowpa")]
-position = Vector2(282, -824)
-
-[node name="World Boundaries" type="StaticBody2D" parent="." unique_id=31237010]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=31237010]
 
 [node name="WorldBoundaryBottom" type="CollisionShape2D" parent="StaticBody2D" unique_id=1218207133]
 position = Vector2(0, 648)
