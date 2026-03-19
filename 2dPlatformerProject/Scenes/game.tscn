@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c74iyy88okafe" path="res://swamp.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://ypf8676ik73o" path="res://player.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://b12vj4onrk1ov" path="res://Scenes/ice.tscn" id="2_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://crvujxcpr2o6a" path="res://ruins.tscn" id="3_wowpa"]
 [ext_resource type="PackedScene" uid="uid://crrngobdig7vj" path="res://frog.tscn" id="4_3dryh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wrm1d"]
@@ -17,9 +16,9 @@ scale = Vector2(2, 2)
 [node name="Ice" parent="." unique_id=745608814 instance=ExtResource("2_wrm1d")]
 position = Vector2(576, -319)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=31237010]
+[node name="World Boundaries" type="StaticBody2D" parent="." unique_id=31237010]
 
-[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="StaticBody2D" unique_id=1218207133]
+[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="World Boundaries" unique_id=1218207133]
 position = Vector2(0, 648)
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
