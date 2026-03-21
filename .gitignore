@@ -11,13 +11,19 @@ export_credentials.cfg
 # Imported translations (automatically generated from CSV files)
 *.translation
 
+# Python cache
+__pycache__/
+*.pyc
+
 # Mono-specific ignores
 .mono/
 data_*/
 mono_crash.*.json
+
+# Visual Studio local workspace files
+2dPlatformerProject/.vs/
 2dPlatformerProject/.vscode/settings.json
 2dPlatformerProject/Assets/Generic Platformer Assets/License.txt
 2dPlatformerProject/Properties/launchSettings.json
-2dPlatformerProject/.vs/2D-PLATFORMER-PROJECT/v18/DocumentLayout.backup.json
-2dPlatformerProject/.vs/2D-PLATFORMER-PROJECT/v18/DocumentLayout.json
 2dPlatformerProject/2D-Platformer-Project.csproj.user
+2D-platformer-project/2dPlatformerProject/.vs/2D-PLATFORMER-PROJECT/CopilotIndices
