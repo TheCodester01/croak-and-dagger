@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bicdxescnxnj6"
-valid=false
+path="res://.godot/imported/Chest_01_Locked.png-46cd334c77b03a8ab6a2cf11be2f9651.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Ruins/Collectable Object/Chest_01_Locked.png"
+dest_files=["res://.godot/imported/Chest_01_Locked.png-46cd334c77b03a8ab6a2cf11be2f9651.ctex"]
 
 [params]
 

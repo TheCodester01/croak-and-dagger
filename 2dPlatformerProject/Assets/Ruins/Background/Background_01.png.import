@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fr5p4cawg16i"
-valid=false
+path="res://.godot/imported/Background_01.png-afe0190a78a4ce82ba880f47d2b5c570.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Ruins/Background/Background_01.png"
+dest_files=["res://.godot/imported/Background_01.png-afe0190a78a4ce82ba880f47d2b5c570.ctex"]
 
 [params]
 

@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfg102ya2l4y5"
-valid=false
+path="res://.godot/imported/Bubble.png-1defd854acb99c09cf24c4c198032965.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Ruins/Collectable Object/Bubble.png"
+dest_files=["res://.godot/imported/Bubble.png-1defd854acb99c09cf24c4c198032965.ctex"]
 
 [params]
 

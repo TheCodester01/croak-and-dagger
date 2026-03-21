@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctctw0ei1h0cd"
-valid=false
+path="res://.godot/imported/Star.png-5ed56e8f078cf91fa555c1b1138510bf.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Ruins/Collectable Object/Star.png"
+dest_files=["res://.godot/imported/Star.png-5ed56e8f078cf91fa555c1b1138510bf.ctex"]
 
 [params]
 

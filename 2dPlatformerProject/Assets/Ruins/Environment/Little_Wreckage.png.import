@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bek8osc4umd5l"
-valid=false
+path="res://.godot/imported/Little_Wreckage.png-f17a926a76077723abdbc61f94ad7d06.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Ruins/Environment/Little_Wreckage.png"
+dest_files=["res://.godot/imported/Little_Wreckage.png-f17a926a76077723abdbc61f94ad7d06.ctex"]
 
 [params]
 

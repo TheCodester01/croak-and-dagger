@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brvwvc5d3sipx"
-valid=false
+path="res://.godot/imported/Light.png-61d3bbd748adf0bc0db99bb87503ac34.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Ruins/Collectable Object/Light.png"
+dest_files=["res://.godot/imported/Light.png-61d3bbd748adf0bc0db99bb87503ac34.ctex"]
 
 [params]
 

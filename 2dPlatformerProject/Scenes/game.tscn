@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c74iyy88okafe" path="res://swamp.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://ypf8676ik73o" path="res://player.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://b12vj4onrk1ov" path="res://Scenes/ice.tscn" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://crvujxcpr2o6a" path="res://ruins.tscn" id="3_wowpa"]
+[ext_resource type="PackedScene" uid="uid://crrngobdig7vj" path="res://frog.tscn" id="4_3dryh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wrm1d"]
 
@@ -14,6 +16,9 @@ scale = Vector2(2, 2)
 
 [node name="Ice" parent="." unique_id=745608814 instance=ExtResource("2_wrm1d")]
 position = Vector2(576, -319)
+
+[node name="Ruins" parent="." unique_id=1091255237 instance=ExtResource("3_wowpa")]
+position = Vector2(281.6, -823.455)
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="." unique_id=31237010]
 
@@ -31,10 +36,14 @@ position = Vector2(1152, 324)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-[node name="Player" parent="." unique_id=1232959386 instance=ExtResource("2_qxrlw")]
-position = Vector2(201, 414)
+[node name="Frog" parent="." unique_id=680118027 instance=ExtResource("4_3dryh")]
+position = Vector2(237, 429)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=134203566]
+[node name="Camera2D" type="Camera2D" parent="Frog" unique_id=134203566]
 limit_left = 0
 limit_right = 1150
 limit_bottom = 648
+
+[node name="Player" parent="." unique_id=1232959386 instance=ExtResource("2_qxrlw")]
+visible = false
+position = Vector2(201, 414)

@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cy6d7sb5avve8"
-valid=false
+path="res://.godot/imported/Hit (32x32).png-7ea1339688307c63b270d119f1fde920.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Frog/Hit (32x32).png"
+dest_files=["res://.godot/imported/Hit (32x32).png-7ea1339688307c63b270d119f1fde920.ctex"]
 
 [params]
 

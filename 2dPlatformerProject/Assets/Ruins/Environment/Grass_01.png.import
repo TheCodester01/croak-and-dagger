@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfnec5qa2743k"
-valid=false
+path="res://.godot/imported/Grass_01.png-090e763190503949417085d1f2864175.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Ruins/Environment/Grass_01.png"
+dest_files=["res://.godot/imported/Grass_01.png-090e763190503949417085d1f2864175.ctex"]
 
 [params]
 

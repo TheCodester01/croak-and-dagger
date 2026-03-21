@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dv5yypkj2b20a"
-valid=false
+path="res://.godot/imported/Idle (32x32)_row-1-column-9.png-e674216d19f2d22f1dc0cab55dd03701.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/Frog/Idle/Idle (32x32)_row-1-column-9.png"
+dest_files=["res://.godot/imported/Idle (32x32)_row-1-column-9.png-e674216d19f2d22f1dc0cab55dd03701.ctex"]
 
 [params]
 
