@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crrngobdig7vj"]
 
-[ext_resource type="Script" uid="uid://cr0ier20w3ts8" path="res://Frog.cs" id="1_yakrr"]
+[ext_resource type="Script" uid="uid://cr0ier20w3ts8" path="res://Scripts/Frog.cs" id="1_yakrr"]
 [ext_resource type="Texture2D" uid="uid://b2lx02l2lk0rn" path="res://Assets/Frog/Fall (32x32).png" id="2_71pkg"]
 [ext_resource type="Texture2D" uid="uid://dl3btyho5vgl6" path="res://Assets/Frog/Idle/Idle (32x32)_row-1-column-1.png" id="3_ia14r"]
 [ext_resource type="Texture2D" uid="uid://disf5nvab2sun" path="res://Assets/Frog/Idle/Idle (32x32)_row-1-column-2.png" id="4_5j707"]
