@@ -7,9 +7,13 @@ public partial class Game : Node2D
 		var frog = GetNode<Node2D>("Frog");
 		var player = GetNode<Node2D>("Player");
 
-		bool useKnight = GameManager.Instance.SelectedCharacter == "knight";
-
-		player.Visible = useKnight;
-		frog.Visible = !useKnight;
+		if (GameManager.Instance.SelectedCharacter == "frog")
+		{
+			player.QueueFree();
+		}
+		else
+		{
+			frog.QueueFree();
+		}
 	}
 }
