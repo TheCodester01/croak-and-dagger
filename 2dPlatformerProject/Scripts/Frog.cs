@@ -11,11 +11,13 @@ public partial class Frog : CharacterBody2D
 	
 	[Export]
 	public int JumpPowerMaxSeconds =  1;
-	
+
+	[Export]
+	public float JumpVelocity = -800.0f;
+
 	private float JumpPowerElapsedTime = 0.0f;
 	
 	public const float HorizontalVelocity = 150.0f;
-	public const float JumpVelocity = -800.0f;
 
 	public override void _PhysicsProcess(double delta)
 	{
