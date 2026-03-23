@@ -5,10 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://b12vj4onrk1ov" path="res://Scenes/ice.tscn" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://crvujxcpr2o6a" path="res://Scenes/ruins.tscn" id="3_wowpa"]
 [ext_resource type="PackedScene" uid="uid://crrngobdig7vj" path="res://Scenes/frog.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="5_hud"]
+[ext_resource type="PackedScene" path="res://Scenes/PauseMenu.tscn" id="6_pm"]
+[ext_resource type="Script" uid="uid://whntob6vyyus" path="res://Scripts/Game.cs" id="7_game"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wrm1d"]
 
 [node name="Game" type="Node2D" unique_id=1793699421]
+script = ExtResource("7_game")
 
 [node name="Swamp" parent="." unique_id=565414417 instance=ExtResource("1_wrm1d")]
 position = Vector2(576, 328)
@@ -45,5 +49,13 @@ limit_right = 1150
 limit_bottom = 648
 
 [node name="Player" parent="." unique_id=1232959386 instance=ExtResource("2_qxrlw")]
-visible = false
 position = Vector2(201, 414)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1178984784]
+limit_left = 0
+limit_right = 1150
+limit_bottom = 648
+
+[node name="HUD" parent="." unique_id=446945281 instance=ExtResource("5_hud")]
+
+[node name="PauseMenu" parent="." unique_id=1851816575 instance=ExtResource("6_pm")]
