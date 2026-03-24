@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://1tmymg0cijtq"]
+
+[ext_resource type="Script" uid="uid://bwirdrchbpyjb" path="res://Scripts/MovingPlatformIce.cs" id="1_srb5e"]
+[ext_resource type="Texture2D" uid="uid://jra8vcxd8l3t" path="res://Assets/Ice Assets/1 Tiles/Tileset.png" id="1_ubju7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anqd2"]
+size = Vector2(96, 15)
+
+[sub_resource type="Animation" id="Animation_g04cb"]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving Platform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ird8g"]
+resource_name = "platform_move"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(330, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_srb5e"]
+resource_name = "platform_move_rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(330, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Moving Platform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2v18"]
+_data = {
+&"RESET": SubResource("Animation_g04cb"),
+&"platform_move": SubResource("Animation_ird8g"),
+&"platform_move_rotate": SubResource("Animation_srb5e")
+}
+
+[node name="Moving Platform" type="Node2D" unique_id=2059025927]
+script = ExtResource("1_srb5e")
+
+[node name="Moving Platform" type="AnimatableBody2D" parent="." unique_id=1418724053]
+unique_name_in_owner = true
+
+[node name="Platform" type="Sprite2D" parent="Moving Platform" unique_id=263479046]
+texture = ExtResource("1_ubju7")
+region_enabled = true
+region_rect = Rect2(192, 0, 96, 16)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moving Platform" unique_id=1909481361]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_anqd2")
+
+[node name="Platform Move" type="AnimationPlayer" parent="." unique_id=79327281]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_j2v18")
+
+[node name="Timer" type="Timer" parent="." unique_id=1271900280]
+unique_name_in_owner = true
