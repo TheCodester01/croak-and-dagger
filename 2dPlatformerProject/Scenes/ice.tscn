@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://jra8vcxd8l3t" path="res://Assets/Ice Assets/1 Tiles/Tileset.png" id="2_g02c5"]
 [ext_resource type="Texture2D" uid="uid://crmm4ty3cirfb" path="res://Assets/Ice Assets/4 Animated objects/Flag.png" id="3_u7iie"]
 [ext_resource type="Texture2D" uid="uid://bmcajb2e6qtwv" path="res://Assets/Ice Assets/3 Objects/Trees/1.png" id="4_jf77p"]
+[ext_resource type="PackedScene" uid="uid://1tmymg0cijtq" path="res://Scenes/moving_platform_ice.tscn" id="4_rtyq4"]
 [ext_resource type="Texture2D" uid="uid://rl8egsd4ejlh" path="res://Assets/Ice Assets/3 Objects/Pointers/7.png" id="5_clp2u"]
 [ext_resource type="Texture2D" uid="uid://k45amohuolpm" path="res://Assets/Ice Assets/3 Objects/Bushes/3.png" id="7_g0b66"]
 [ext_resource type="Texture2D" uid="uid://by1aoyr623q8n" path="res://Assets/Ice Assets/3 Objects/Igloo/1.png" id="8_rtyq4"]
 [ext_resource type="Texture2D" uid="uid://bgvpmeg4jccno" path="res://Assets/Ice Assets/3 Objects/Pointers/3.png" id="9_g0b66"]
-[ext_resource type="PackedScene" uid="uid://1tmymg0cijtq" path="res://Scenes/moving_platform_ice.tscn" id="11_0bdap"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uice2"]
 tile_data = PackedInt32Array(65536, 786493, 9, 1, 852029, 8, 65537, 852029, 9, 2, 917565, 8, 65538, 917565, 9, 65539, 983101, 9)
@@ -542,15 +542,13 @@ tile_map_data = PackedByteArray("AADc/xMAPQABAAEAAADd/xMAPQABAAEAAADe/xMAPQABAAE
 tile_set = SubResource("TileSet_u7iie")
 metadata/_edit_lock_ = true
 
-[node name="Moving Platform" parent="." unique_id=1334020617 instance=ExtResource("11_0bdap")]
-unique_name_in_owner = true
-position = Vector2(-264, 266)
-animation = "platform_move"
+[node name="Moving Platform" parent="." unique_id=2059025927 instance=ExtResource("4_rtyq4")]
+position = Vector2(-270, 265)
+animation = "move"
 
-[node name="Moving Platform 1" parent="." unique_id=2059025927 instance=ExtResource("11_0bdap")]
-unique_name_in_owner = true
-position = Vector2(40, 1)
-animation = "platform_move_rotate"
+[node name="Moving Platform 1" parent="." unique_id=1275512942 instance=ExtResource("4_rtyq4")]
+position = Vector2(-32, -42)
+animation = "move"
 
 [node name="Flag" type="AnimatedSprite2D" parent="." unique_id=1050881241]
 position = Vector2(-194, -41)

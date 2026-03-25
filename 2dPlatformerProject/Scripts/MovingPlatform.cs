@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MovingPlatformIce : Node2D
+public partial class MovingPlatform : Node2D
 {
 	[Export]
 	public string animation = "";
@@ -14,7 +14,6 @@ public partial class MovingPlatformIce : Node2D
         platform_anim = GetNode<AnimationPlayer>("%Platform Move");
         platform_anim.Play(animation);
 		timer.Timeout += PlayAnim;
-        GD.Print(GetNode<Node2D>("%Moving Platform").Position);
     }
 
 	private void PlayAnim()
