@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="5_hud"]
 [ext_resource type="PackedScene" path="res://Scenes/PauseMenu.tscn" id="6_pm"]
 [ext_resource type="Script" uid="uid://whntob6vyyus" path="res://Scripts/Game.cs" id="7_game"]
+[ext_resource type="PackedScene" uid="uid://cbbtgdh657nh1" path="res://Scenes/bat.tscn" id="9_h4fw4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wrm1d"]
 
@@ -57,5 +58,10 @@ limit_right = 1150
 limit_bottom = 648
 
 [node name="HUD" parent="." unique_id=446945281 instance=ExtResource("5_hud")]
+visible = false
 
 [node name="PauseMenu" parent="." unique_id=1851816575 instance=ExtResource("6_pm")]
+visible = false
+
+[node name="Bat" parent="." unique_id=1947315516 instance=ExtResource("9_h4fw4")]
+position = Vector2(629, 273)
