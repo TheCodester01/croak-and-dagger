@@ -4,6 +4,12 @@ using System;
 public partial class Frog : CharacterBody2D
 {
 	[Export]
+	public int CurrentHearts = 3;
+	 
+	[Export]
+	public int MaxHearts = 3;
+	
+	[Export]
 	public float JumpPower = 0.0f;
 	
 	[Export]
@@ -18,6 +24,19 @@ public partial class Frog : CharacterBody2D
 	private float JumpPowerElapsedTime = 0.0f;
 	
 	public const float HorizontalVelocity = 150.0f;
+
+	// Call this when collided with enemy
+	public void TakeDamage() {
+		if (CurrentHearts > 0)
+			CurrentHearts--;
+	}
+	
+	// Call this when collided with heart item
+	public void AddHeart() {
+		if (CurrentHearts < MaxHearts) {
+			CurrentHearts++;
+		}
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
