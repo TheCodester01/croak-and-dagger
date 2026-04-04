@@ -121,7 +121,7 @@ public partial class Frog : CharacterBody2D
 			velocity.X = 0;
 			
   			if (Input.IsActionPressed("ui_accept")) {
-				float t = this.JumpPowerElapsedTime / this.JumpPowerMaxSeconds;
+				float t = Mathf.Clamp(this.JumpPowerElapsedTime / this.JumpPowerMaxSeconds, 0.0f, 1.0f);
 				this.JumpPower = Mathf.Lerp(this.JumpPowerMinimum, 1.0f, t);
 				
 				this.JumpPowerElapsedTime += (float)delta;
