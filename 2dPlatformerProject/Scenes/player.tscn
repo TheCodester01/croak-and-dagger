@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cl40ckig7gxw" path="res://Assets/Knight_1/Dead/Dead06.png" id="6_ek41f"]
 [ext_resource type="Texture2D" uid="uid://bv72o3n0jrsud" path="res://Assets/Knight_1/Idle/Idle01.png" id="7_khis8"]
 [ext_resource type="Texture2D" uid="uid://d30rjq2ynvjl0" path="res://Assets/Knight_1/Idle/Idle02.png" id="8_b88wv"]
+[ext_resource type="Texture2D" uid="uid://bv6qeeu1mk211" path="res://Assets/Knight_1/Hurt/Hurt_row-1-column-1.png" id="8_yh6i2"]
+[ext_resource type="Texture2D" uid="uid://bsd3cso4cm13b" path="res://Assets/Knight_1/Hurt/Hurt_row-1-column-2.png" id="9_nv4vc"]
 [ext_resource type="Texture2D" uid="uid://bfx1dis05pnqd" path="res://Assets/Knight_1/Idle/Idle03.png" id="9_pgbbb"]
 [ext_resource type="Texture2D" uid="uid://gktaaitvbrj8" path="res://Assets/Knight_1/Idle/Idle04.png" id="10_331ug"]
 [ext_resource type="Texture2D" uid="uid://4xm6lti8n832" path="res://Assets/Knight_1/Jump/Jump01.png" id="11_ny14h"]
@@ -57,6 +59,17 @@ animations = [{
 "loop": true,
 "name": &"dead",
 "speed": 5.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_yh6i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nv4vc")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -165,7 +178,14 @@ script = ExtResource("1_efrwb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=63538264]
 position = Vector2(33, -34)
 sprite_frames = SubResource("SpriteFrames_h6w8y")
-animation = &"walk"
+animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2085957696]
 shape = SubResource("CapsuleShape2D_yem3p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=86551633]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=54067426]
+shape = SubResource("CapsuleShape2D_yem3p")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

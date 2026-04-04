@@ -253,17 +253,17 @@ size = Vector2(27.65625, 16.4375)
 [node name="Bat" type="Node2D" unique_id=1947315516]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=377214692]
-root_node = NodePath("../CharacterBody2D")
+root_node = NodePath("../Area2D")
 libraries/ = SubResource("AnimationLibrary_qaib8")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=128514848 node_paths=PackedStringArray("animation_player")]
+[node name="Area2D" type="Area2D" parent="." unique_id=1678640536 node_paths=PackedStringArray("animation_player") groups=["enemy"]]
 script = ExtResource("1_s1ovm")
 animation_player = NodePath("../AnimationPlayer")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=532418801]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=532418801]
 sprite_frames = SubResource("SpriteFrames_xtqn3")
 animation = &"attack1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1516904306]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1516904306]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_16es4")

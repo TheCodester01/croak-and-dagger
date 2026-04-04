@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bnacioi757epj"]
+
+[ext_resource type="Texture2D" uid="uid://dp53tk3lh52na" path="res://Assets/Heart/Royal Heart_row-1-column-1.png" id="1_t4qiy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_voimm"]
+size = Vector2(21, 22)
+
+[node name="HeartItem" type="Area2D" unique_id=877193100 groups=["heart"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=946426968]
+texture = ExtResource("1_t4qiy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599464545]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_voimm")

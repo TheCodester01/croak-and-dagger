@@ -23,6 +23,11 @@ GameManager="*res://GameManager.cs"
 
 project/assembly_name="2D-Platformer-Project"
 
+[global_group]
+
+enemy=""
+heart=""
+
 [input]
 
 sprint={

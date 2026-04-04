@@ -25,25 +25,76 @@ public partial class Frog : CharacterBody2D
 	
 	public const float HorizontalVelocity = 150.0f;
 
-	// Call this when collided with enemy
-	public void TakeDamage() {
-		if (CurrentHearts > 0)
+	[Export]
+	public int SecondsBetweenDamage = 1;
+    
+	private float TimeSinceLastDamage = 0.0f;
+
+	private bool TookDamage = false;
+
+	AnimatedSprite2D anim_sprite;
+
+	[Export]
+	public HealthDisplay healthDisplay;
+
+    // Call this when collided with enemy
+    public void TakeDamage() {
+		if (!TookDamage && CurrentHearts > 0)
+		{
 			CurrentHearts--;
+            anim_sprite.Play("hit");
+            healthDisplay.TakeDamage();
+            TookDamage = true;
+        }
 	}
 	
 	// Call this when collided with heart item
-	public void AddHeart() {
+	public bool AddHeart() {
 		if (CurrentHearts < MaxHearts) {
 			CurrentHearts++;
+			healthDisplay.Recover();
+            return true;
 		}
+
+		return false;
 	}
 
-	public override void _PhysicsProcess(double delta)
+	public void _on_area_2d_area_entered(Area2D area)
+	{
+        if (area.IsInGroup("enemy"))
+        {
+            TakeDamage();
+        }
+        else if (area.IsInGroup("heart"))
+        {
+            if (AddHeart())
+                area.QueueFree(); // This deletes the item node from the scene
+        }
+    }
+
+    public override void _Ready()
+    {
+        anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+    }
+
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
-		// Add the gravity.
-		if (!IsOnFloor())
+        // Handle damage cooldown
+        if (TookDamage)
+		{
+            TimeSinceLastDamage += (float)delta;
+
+            if (TimeSinceLastDamage >= SecondsBetweenDamage)
+            {
+                TookDamage = false;
+                TimeSinceLastDamage = 0.0f;
+            }
+        }
+
+        // Add the gravity.
+        if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
 		}
@@ -72,26 +123,26 @@ public partial class Frog : CharacterBody2D
 				velocity.X = HorizontalVelocity;
 			}
 		}
-		
-		AnimatedSprite2D anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		
-		if (velocity.Y < 0)
-		{
-			anim_sprite.Animation = "jump";
-		}
-		else if (velocity.Y > 0) {
-			anim_sprite.Animation = "fall";			
-		}
-		else
-		{
-			anim_sprite.Animation = "idle";
-		}
 
-		anim_sprite.FlipH = direction.X < 0.0;
+		if (!(anim_sprite.IsPlaying() && anim_sprite.Animation == "hit")) {
+			if (velocity.Y < 0)
+			{
+				anim_sprite.Animation = "jump";
+			}
+			else if (velocity.Y > 0) {
+				anim_sprite.Animation = "fall";
+			}
+			else
+			{
+				anim_sprite.Animation = "idle";
+			}
 
-		anim_sprite.Play();
+			anim_sprite.FlipH = direction.X < 0.0;
+
+			anim_sprite.Play();
+		}
 
 		Velocity = velocity;
 		MoveAndSlide();
