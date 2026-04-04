@@ -50,7 +50,7 @@ public partial class Player : CharacterBody2D
     private async void ShowGameOverAfterAnimation(AnimatedSprite2D heartSprite)
     {
         await ToSignal(anim_sprite, AnimatedSprite2D.SignalName.AnimationFinished);
-        if (heartSprite != null)
+        if (heartSprite != null && heartSprite.IsPlaying())
             await ToSignal(heartSprite, AnimatedSprite2D.SignalName.AnimationFinished);
         gameOver.ShowGameOver();
     }
