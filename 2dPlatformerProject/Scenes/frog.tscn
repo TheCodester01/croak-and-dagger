@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cid6kboek3165" path="res://Assets/Frog/Idle/Idle (32x32)_row-1-column-10.png" id="12_mlwm1"]
 [ext_resource type="Texture2D" uid="uid://b3h1qttx1xlhk" path="res://Assets/Frog/Idle/Idle (32x32)_row-1-column-11.png" id="13_u54sv"]
 [ext_resource type="Texture2D" uid="uid://b8i4jiofoktwl" path="res://Assets/Frog/Jump (32x32).png" id="14_ty1au"]
+[ext_resource type="AudioStream" uid="uid://d2nvcaidco51p" path="res://Assets/Audio/gargamel10-frog-sound-effect-380312.mp3" id="22_ai0vt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_udjml"]
 animations = [{
@@ -124,5 +125,8 @@ shape = SubResource("CapsuleShape2D_23ppf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=844647187]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_23ppf")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1938981649]
+stream = ExtResource("22_ai0vt")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

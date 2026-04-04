@@ -33,6 +33,7 @@ public partial class Frog : CharacterBody2D
 	private bool TookDamage = false;
 
 	AnimatedSprite2D anim_sprite;
+	private AudioStreamPlayer _hurtSound;
 
 	[Export]
 	public HealthDisplay healthDisplay;
@@ -43,6 +44,7 @@ public partial class Frog : CharacterBody2D
 		{
 			CurrentHearts--;
             anim_sprite.Play("hit");
+            _hurtSound.Play();
             healthDisplay.TakeDamage();
             TookDamage = true;
         }
@@ -75,6 +77,7 @@ public partial class Frog : CharacterBody2D
     public override void _Ready()
     {
         anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        _hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
     }
 
     public override void _PhysicsProcess(double delta)

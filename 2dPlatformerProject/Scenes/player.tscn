@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://bkmn02opti1y8" path="res://Assets/Knight_1/Walk/Walk06.png" id="29_v2t6f"]
 [ext_resource type="Texture2D" uid="uid://b4shi5gt6f4c4" path="res://Assets/Knight_1/Walk/Walk07.png" id="30_l3lcn"]
 [ext_resource type="Texture2D" uid="uid://boc2k2m3v33rc" path="res://Assets/Knight_1/Walk/Walk08.png" id="31_xry5e"]
+[ext_resource type="AudioStream" uid="uid://cj4re034njf8p" path="res://Assets/Audio/freesound_community-ough-47202.mp3" id="35_nv4vc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h6w8y"]
 animations = [{
@@ -187,5 +188,8 @@ shape = SubResource("CapsuleShape2D_yem3p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=54067426]
 shape = SubResource("CapsuleShape2D_yem3p")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1213293989]
+stream = ExtResource("35_nv4vc")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

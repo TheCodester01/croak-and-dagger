@@ -8,8 +8,16 @@ public partial class GameManager : Node
 	public float ElapsedTime { get; set; } = 0.0f;
 	public bool IsPaused { get; set; } = false;
 
+	private AudioStreamPlayer _music;
+
 	public override void _Ready()
 	{
 		Instance = this;
+
+		_music = new AudioStreamPlayer();
+		AddChild(_music);
+		_music.Stream = GD.Load<AudioStream>("res://Assets/Audio/moodmode-8-bit-arcade-138828.mp3");
+		_music.VolumeDb = 0f;
+		_music.Play();
 	}
 }

@@ -10,6 +10,7 @@ public partial class Player : CharacterBody2D
 	bool jumped = false;
 	private AnimatedSprite2D anim_sprite;
 	private int facing_dir = 1;
+	private AudioStreamPlayer _hurtSound;
 
     [Export]
     public int CurrentHearts = 3;
@@ -34,6 +35,7 @@ public partial class Player : CharacterBody2D
         {
             CurrentHearts--;
             anim_sprite.Play("hit");
+            _hurtSound.Play();
             healthDisplay.TakeDamage();
             TookDamage = true;
         }
@@ -77,6 +79,7 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        _hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
     }
 
     public override void _PhysicsProcess(double delta)
