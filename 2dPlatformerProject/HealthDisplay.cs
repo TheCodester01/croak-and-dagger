@@ -11,7 +11,7 @@ public partial class HealthDisplay : CanvasLayer
         hearts = GetNode<BoxContainer>("Hearts");
     }
     
-    public void TakeDamage()
+    public AnimatedSprite2D TakeDamage()
     {
         for (int i = hearts.GetChildCount() - 1; i >= 0; i--)
         {
@@ -21,9 +21,10 @@ public partial class HealthDisplay : CanvasLayer
             if (heart_anim_sprite.Animation == "idle" || heart_anim_sprite.Animation == "recover")
             {
                 heart_anim_sprite.Play("lost");
-                break;
+                return heart_anim_sprite;
             }
         }
+        return null;
     }
 
     public void Recover()
