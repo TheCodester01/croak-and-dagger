@@ -38,6 +38,9 @@ public partial class Frog : CharacterBody2D
 	[Export]
 	public HealthDisplay healthDisplay;
 
+	[Export]
+	public GameOver gameOver;
+
     // Call this when collided with enemy
     public void TakeDamage() {
 		if (!TookDamage && CurrentHearts > 0)
@@ -45,11 +48,22 @@ public partial class Frog : CharacterBody2D
 			CurrentHearts--;
             anim_sprite.Play("hit");
             _hurtSound.Play();
-            healthDisplay.TakeDamage();
+            var heartSprite = healthDisplay.TakeDamage();
             TookDamage = true;
+
+            if (CurrentHearts <= 0)
+                ShowGameOverAfterAnimation(heartSprite);
         }
 	}
-	
+
+    private async void ShowGameOverAfterAnimation(AnimatedSprite2D heartSprite)
+    {
+        await ToSignal(anim_sprite, AnimatedSprite2D.SignalName.AnimationFinished);
+        if (heartSprite != null)
+            await ToSignal(heartSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+        gameOver.ShowGameOver();
+    }
+
 	// Call this when collided with heart item
 	public bool AddHeart() {
 		if (CurrentHearts < MaxHearts) {
