@@ -43,8 +43,10 @@ position = Vector2(1152, 324)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-[node name="Frog" parent="." unique_id=680118027 instance=ExtResource("4_3dryh")]
+[node name="Frog" parent="." unique_id=680118027 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("4_3dryh")]
 position = Vector2(237, 429)
+healthDisplay = NodePath("../HUD/Health Display")
+gameOver = NodePath("../GameOver")
 
 [node name="Camera2D" type="Camera2D" parent="Frog" unique_id=134203566]
 limit_left = 0
@@ -72,6 +74,7 @@ visible = false
 
 [node name="GameOver" parent="." unique_id=1777932174 instance=ExtResource("8_govr")]
 
-[node name="Bat" parent="." unique_id=1947315516 node_paths=PackedStringArray("player") instance=ExtResource("9_h4fw4")]
+[node name="Bat" parent="." unique_id=1947315516 node_paths=PackedStringArray("frog_player", "knight_player") instance=ExtResource("9_h4fw4")]
 position = Vector2(629, 273)
-player = NodePath("../Player")
+frog_player = NodePath("../Frog")
+knight_player = NodePath("../Player")
