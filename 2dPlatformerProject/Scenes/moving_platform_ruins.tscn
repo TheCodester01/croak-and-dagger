@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bn1iio4jpgww5"]
+
+[ext_resource type="Script" uid="uid://bwirdrchbpyjb" path="res://Scripts/MovingPlatform.cs" id="1_alcon"]
+[ext_resource type="Texture2D" uid="uid://s4mvoiv03u47" path="res://Assets/Ruins/ai_tiles.png" id="1_go5m2"]
+
+[sub_resource type="Animation" id="Animation_srb5e"]
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(330, 0), Vector2(330, -150), Vector2(0, -150)]
+}
+
+[sub_resource type="Animation" id="Animation_g04cb"]
+resource_name = "move"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(330, 0), Vector2(330, -150), Vector2(0, -150)]
+}
+
+[sub_resource type="Animation" id="Animation_ird8g"]
+resource_name = "move_rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(330, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving Platform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sly8j"]
+_data = {
+&"RESET": SubResource("Animation_srb5e"),
+&"move": SubResource("Animation_g04cb"),
+&"move_rotate": SubResource("Animation_ird8g")
+}
+
+[node name="Moving Platform" type="Node2D" unique_id=750068304]
+script = ExtResource("1_alcon")
+animation = "move"
+
+[node name="Moving Platform" type="AnimatableBody2D" parent="." unique_id=1320566917]
+unique_name_in_owner = true
+scale = Vector2(0.25, 0.25)
+
+[node name="Platform" type="Sprite2D" parent="Moving Platform" unique_id=965658298]
+texture = ExtResource("1_go5m2")
+region_enabled = true
+region_rect = Rect2(327, 512, 286, 81)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Moving Platform" unique_id=1222283180]
+position = Vector2(0, 1)
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(-35.5, -10.5, -32.75, 0.25, -17.5, 6.25, -1.5, 9.5, 13.75, 7.25, 30.5, 1.5, 35.5, -10.25)
+
+[node name="Platform Move" type="AnimationPlayer" parent="Moving Platform" unique_id=179153558]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_sly8j")
+
+[node name="Timer" type="Timer" parent="." unique_id=1549683599]
+unique_name_in_owner = true
