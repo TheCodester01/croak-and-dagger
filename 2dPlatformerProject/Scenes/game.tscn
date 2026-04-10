@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://crrngobdig7vj" path="res://Scenes/frog.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="5_hud"]
 [ext_resource type="PackedScene" path="res://Scenes/PauseMenu.tscn" id="6_pm"]
-[ext_resource type="PackedScene" path="res://Scenes/GameOver.tscn" id="8_govr"]
 [ext_resource type="Script" uid="uid://whntob6vyyus" path="res://Scripts/Game.cs" id="7_game"]
 [ext_resource type="PackedScene" uid="uid://do4g16koaxdq7" path="res://Scenes/health_display.tscn" id="7_ldgsr"]
+[ext_resource type="PackedScene" path="res://Scenes/GameOver.tscn" id="8_govr"]
 [ext_resource type="PackedScene" uid="uid://cbbtgdh657nh1" path="res://Scenes/bat.tscn" id="9_h4fw4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wrm1d"]
@@ -45,27 +45,17 @@ position = Vector2(1152, 324)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-[node name="Frog" parent="." unique_id=680118027 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("4_3dryh")]
+[node name="Frog" parent="." unique_id=680118027 instance=ExtResource("4_3dryh")]
 position = Vector2(237, 429)
+
+[node name="Knight" parent="." unique_id=1232959386 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("2_qxrlw")]
+position = Vector2(157, 448)
 healthDisplay = NodePath("../HUD/Health Display")
 gameOver = NodePath("../GameOver")
-
-[node name="Knight" parent="." unique_id=1232959386 instance=ExtResource("2_qxrlw")]
-position = Vector2(157, 448)
 
 [node name="Camera2D" type="Camera2D" parent="Knight" unique_id=134203566]
 position = Vector2(-44, -10.666626)
 scale = Vector2(1.3333334, 1.3333334)
-limit_left = 0
-limit_right = 1150
-limit_bottom = 648
-
-[node name="Player" parent="." unique_id=1232959386 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("2_qxrlw")]
-position = Vector2(201, 414)
-healthDisplay = NodePath("../HUD/Health Display")
-gameOver = NodePath("../GameOver")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1178984784]
 limit_left = 0
 limit_right = 1150
 limit_bottom = 648
@@ -79,7 +69,7 @@ transform = Transform2D(1, 0, 0, 1, 15.71, 15.3)
 [node name="PauseMenu" parent="." unique_id=1851816575 instance=ExtResource("6_pm")]
 visible = false
 
-[node name="GameOver" parent="." instance=ExtResource("8_govr")]
+[node name="GameOver" parent="." unique_id=596184978 instance=ExtResource("8_govr")]
 
 [node name="Bat" parent="." unique_id=1947315516 instance=ExtResource("9_h4fw4")]
 position = Vector2(629, 273)
