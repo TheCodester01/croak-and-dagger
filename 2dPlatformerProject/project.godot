@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="2D-Platformer-Project"
-run/main_scene="res://Scenes/CharacterSelect.tscn"
+config/name="croak-and-dagger"
+run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,11 @@ GameManager="*res://GameManager.cs"
 [dotnet]
 
 project/assembly_name="2D-Platformer-Project"
+
+[global_group]
+
+enemy=""
+heart=""
 
 [input]
 
