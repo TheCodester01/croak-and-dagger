@@ -10,24 +10,112 @@ public partial class Knight : CharacterBody2D
 	bool jumped = false;
 	private AnimatedSprite2D anim_sprite;
 	private int facing_dir = 1;
+	private AudioStreamPlayer _hurtSound;
 
-	public override void _UnhandledInput(InputEvent @event)
+    [Export]
+    public int CurrentHearts = 3;
+
+    [Export]
+    public int MaxHearts = 3;
+
+    [Export]
+    public int SecondsBetweenDamage = 1;
+
+    private float TimeSinceLastDamage = 0.0f;
+
+    private bool TookDamage = false;
+
+    [Export]
+    public HealthDisplay healthDisplay;
+
+    [Export]
+    public GameOver gameOver;
+
+    // Call this when collided with enemy
+    public void TakeDamage()
+    {
+        if (!TookDamage && CurrentHearts > 0)
+        {
+            CurrentHearts--;
+            anim_sprite.Play("hit");
+            _hurtSound.Play();
+            var heartSprite = healthDisplay.TakeDamage();
+            TookDamage = true;
+
+            if (CurrentHearts <= 0)
+                ShowGameOverAfterAnimation(heartSprite);
+        }
+    }
+
+    private async void ShowGameOverAfterAnimation(AnimatedSprite2D heartSprite)
+    {
+        await ToSignal(anim_sprite, AnimatedSprite2D.SignalName.AnimationFinished);
+        if (heartSprite != null && heartSprite.IsPlaying())
+            await ToSignal(heartSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+        gameOver.ShowGameOver();
+    }
+
+    // Call this when collided with heart item
+    public bool AddHeart()
+    {
+        if (CurrentHearts < MaxHearts)
+        {
+            CurrentHearts++;
+            healthDisplay.Recover();
+            return true;
+        }
+
+        return false;
+    }
+
+    public void _on_area_2d_area_entered(Area2D area)
+    {
+        if (area.IsInGroup("enemy"))
+        {
+            TakeDamage();
+        }
+        else if (area.IsInGroup("heart"))
+        {
+            if (AddHeart())
+                area.QueueFree(); // This deletes the item node from the scene
+        }
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event.IsActionPressed("jump") && IsOnFloor())
 		{
 			jumped = true;
 		}
 		base._UnhandledInput(@event);
-	}
+    }
 
-	public override void _PhysicsProcess(double delta)
+    public override void _Ready()
+    {
+        anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        _hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
+    }
+
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector2 direction = Input.GetVector("left", "right", "ui_up", "ui_down"); // Get the input direction and handle the movement/deceleration.
 		Vector2 velocity = Velocity;
 		is_sprinting = Input.IsActionPressed("sprint") && IsOnFloor();
 
-		// Add the gravity.
-		if (!IsOnFloor())
+        // Handle damage cooldown
+        if (TookDamage)
+        {
+            TimeSinceLastDamage += (float)delta;
+
+            if (TimeSinceLastDamage >= SecondsBetweenDamage)
+            {
+                TookDamage = false;
+                TimeSinceLastDamage = 0.0f;
+            }
+        }
+
+        // Add the gravity.
+        if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
 		}
@@ -66,29 +154,29 @@ public partial class Knight : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
+		if (!(anim_sprite.IsPlaying() && anim_sprite.Animation == "hit"))
+		{
+			if (!IsOnFloor())
+			{
+				anim_sprite.Animation = "jump";
+				anim_sprite.FlipH = facing_dir == -1;
+				float offset_x = anim_sprite.FlipH ? -64 : 0;
+				anim_sprite.Offset = new Vector2(offset_x, 0);
+			}
+			else if (Velocity.X != 0.0 && IsOnFloor())
+			{
+				anim_sprite.Animation = is_sprinting ? "run" : "walk";
+				anim_sprite.FlipH = facing_dir == -1;
+				float offset_x = anim_sprite.FlipH ? -64 : 0;
+				anim_sprite.Offset = new Vector2(offset_x, 0);
+			}
+			else
+			{
+				anim_sprite.Animation = "idle";
+			}
 
-		anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-
-		if (!IsOnFloor())
-		{
-			anim_sprite.Animation = "jump";
-			anim_sprite.FlipH = facing_dir == -1;
-			float offset_x = anim_sprite.FlipH ? -64 : 0;
-			anim_sprite.Offset = new Vector2(offset_x, 0);
+			anim_sprite.Play();
 		}
-		else if (Velocity.X != 0.0 && IsOnFloor())
-		{
-			anim_sprite.Animation = is_sprinting ? "run" : "walk";
-			anim_sprite.FlipH = facing_dir == -1;
-			float offset_x = anim_sprite.FlipH ? -64 : 0;
-			anim_sprite.Offset = new Vector2(offset_x, 0);
-		}
-		else
-		{
-			anim_sprite.Animation = "idle";
-		}
-		
-		anim_sprite.Play();
 
 		base._Process(delta);
 	}

@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cl40ckig7gxw" path="res://Assets/Knight_1/Dead/Dead06.png" id="6_ek41f"]
 [ext_resource type="Texture2D" uid="uid://bv72o3n0jrsud" path="res://Assets/Knight_1/Idle/Idle01.png" id="7_khis8"]
 [ext_resource type="Texture2D" uid="uid://d30rjq2ynvjl0" path="res://Assets/Knight_1/Idle/Idle02.png" id="8_b88wv"]
+[ext_resource type="Texture2D" uid="uid://bv6qeeu1mk211" path="res://Assets/Knight_1/Hurt/Hurt_row-1-column-1.png" id="8_yh6i2"]
+[ext_resource type="Texture2D" uid="uid://bsd3cso4cm13b" path="res://Assets/Knight_1/Hurt/Hurt_row-1-column-2.png" id="9_nv4vc"]
 [ext_resource type="Texture2D" uid="uid://bfx1dis05pnqd" path="res://Assets/Knight_1/Idle/Idle03.png" id="9_pgbbb"]
 [ext_resource type="Texture2D" uid="uid://gktaaitvbrj8" path="res://Assets/Knight_1/Idle/Idle04.png" id="10_331ug"]
 [ext_resource type="Texture2D" uid="uid://4xm6lti8n832" path="res://Assets/Knight_1/Jump/Jump01.png" id="11_ny14h"]
@@ -32,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://bkmn02opti1y8" path="res://Assets/Knight_1/Walk/Walk06.png" id="29_v2t6f"]
 [ext_resource type="Texture2D" uid="uid://b4shi5gt6f4c4" path="res://Assets/Knight_1/Walk/Walk07.png" id="30_l3lcn"]
 [ext_resource type="Texture2D" uid="uid://boc2k2m3v33rc" path="res://Assets/Knight_1/Walk/Walk08.png" id="31_xry5e"]
+[ext_resource type="AudioStream" uid="uid://cj4re034njf8p" path="res://Assets/Audio/freesound_community-ough-47202.mp3" id="35_nv4vc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h6w8y"]
 animations = [{
@@ -57,6 +60,17 @@ animations = [{
 "loop": true,
 "name": &"dead",
 "speed": 5.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_yh6i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nv4vc")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -166,6 +180,17 @@ script = ExtResource("1_efrwb")
 position = Vector2(33, -34)
 sprite_frames = SubResource("SpriteFrames_h6w8y")
 animation = &"dead"
+animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2085957696]
 shape = SubResource("CapsuleShape2D_yem3p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=86551633]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=54067426]
+shape = SubResource("CapsuleShape2D_yem3p")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1213293989]
+stream = ExtResource("35_nv4vc")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

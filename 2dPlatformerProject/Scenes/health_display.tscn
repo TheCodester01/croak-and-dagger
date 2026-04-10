@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://do4g16koaxdq7"]
+
+[ext_resource type="Script" uid="uid://ddkj6rsvl1wo3" path="res://HealthDisplay.cs" id="1_ys4b7"]
+[ext_resource type="Texture2D" uid="uid://dp53tk3lh52na" path="res://Assets/Heart/Royal Heart_row-1-column-1.png" id="2_ngyog"]
+[ext_resource type="Texture2D" uid="uid://fuymlwew1ab5" path="res://Assets/Heart/Royal Heart_row-1-column-2.png" id="3_po51p"]
+[ext_resource type="Texture2D" uid="uid://c2nj3p067oyej" path="res://Assets/Heart/Royal Heart_row-1-column-3.png" id="4_f1is4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5eonx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ngyog")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ngyog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_po51p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f1is4")
+}],
+"loop": false,
+"name": &"lost",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_f1is4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_po51p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ngyog")
+}],
+"loop": false,
+"name": &"recover",
+"speed": 5.0
+}]
+
+[node name="Health Display" type="CanvasLayer" unique_id=852095536]
+script = ExtResource("1_ys4b7")
+
+[node name="Hearts" type="HBoxContainer" parent="." unique_id=1637138222]
+offset_right = 68.0
+offset_bottom = 53.0
+
+[node name="heart" type="TextureRect" parent="Hearts" unique_id=886930516]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="Hearts/heart" unique_id=1730214118]
+sprite_frames = SubResource("SpriteFrames_5eonx")
+animation = &"idle"
+
+[node name="heart2" type="TextureRect" parent="Hearts" unique_id=166166469]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="Hearts/heart2" unique_id=28575449]
+sprite_frames = SubResource("SpriteFrames_5eonx")
+animation = &"idle"
+
+[node name="heart3" type="TextureRect" parent="Hearts" unique_id=2044403424]
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="Hearts/heart3" unique_id=1168526873]
+sprite_frames = SubResource("SpriteFrames_5eonx")
+animation = &"idle"
