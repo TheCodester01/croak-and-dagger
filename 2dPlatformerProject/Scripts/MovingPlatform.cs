@@ -6,14 +6,14 @@ public partial class MovingPlatform : Node2D
 	[Export]
 	public string animation = "";
 	AnimationPlayer platform_anim;
-	Timer timer;
+	//Timer timer;
 
 	public override void _Ready()
 	{
-		timer = GetNode<Timer>("%Timer");
+		//timer = GetNode<Timer>("%Timer");
         platform_anim = GetNode<AnimationPlayer>("%Platform Move");
         platform_anim.Play(animation);
-		timer.Timeout += PlayAnim;
+		//timer.Timeout += PlayAnim;
     }
 
 	private void PlayAnim()
@@ -21,9 +21,9 @@ public partial class MovingPlatform : Node2D
 		platform_anim.Play(platform_anim.CurrentAnimation);
 	}
 
-	private void PauseAnim()
-	{
-		platform_anim.Pause();
-		timer.Start(1.0);
-	}
+	// private void PauseAnim()
+	// {
+	// 	platform_anim.Pause();
+	// 	timer.Start(1.0);
+	// }
 }

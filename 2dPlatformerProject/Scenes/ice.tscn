@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://b12vj4onrk1ov"]
 
+[ext_resource type="Script" uid="uid://sts7pop7ivfe" path="res://Scripts/Ice.cs" id="1_qgo3l"]
 [ext_resource type="Texture2D" uid="uid://b3vmygu7bwo11" path="res://Assets/Ice Assets/2 Background/Background.png" id="1_uice2"]
 [ext_resource type="Texture2D" uid="uid://bbu8mlekyenvg" path="res://Assets/Ice Assets/3 Objects/Boxes/2.png" id="2_2oicu"]
 [ext_resource type="Texture2D" uid="uid://jra8vcxd8l3t" path="res://Assets/Ice Assets/1 Tiles/Tileset.png" id="2_g02c5"]
@@ -529,6 +530,7 @@ animations = [{
 }]
 
 [node name="Ice" type="Node2D" unique_id=745608814]
+script = ExtResource("1_qgo3l")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=691726081]
 position = Vector2(0, -3.1249938)
@@ -547,6 +549,7 @@ position = Vector2(-270, 265)
 animation = "move"
 
 [node name="Moving Platform 1" parent="." unique_id=1275512942 instance=ExtResource("4_rtyq4")]
+unique_name_in_owner = true
 position = Vector2(-32, -42)
 animation = "move"
 
@@ -581,3 +584,9 @@ metadata/_edit_lock_ = true
 position = Vector2(-239, -252)
 texture = ExtResource("9_g0b66")
 metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1785818172]
+unique_name_in_owner = true
+wait_time = 0.75
+one_shot = true
+autostart = true

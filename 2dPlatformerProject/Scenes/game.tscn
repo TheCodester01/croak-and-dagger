@@ -43,7 +43,7 @@ visible = false
 position = Vector2(154, 400)
 
 [node name="Knight" parent="." unique_id=1232959386 instance=ExtResource("2_qxrlw")]
-position = Vector2(294, -381)
+position = Vector2(157, 448)
 
 [node name="Camera2D" type="Camera2D" parent="Knight" unique_id=134203566]
 position = Vector2(-44, -10.666626)
