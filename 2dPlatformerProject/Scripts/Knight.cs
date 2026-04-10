@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody2D
+public partial class Knight : CharacterBody2D
 {
 	public const float Speed = 300.0f;
 	public const float SprintMultiplier = 1.5f;

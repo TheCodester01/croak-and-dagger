@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpxafr8apgf48"]
 
 [ext_resource type="PackedScene" uid="uid://c74iyy88okafe" path="res://Scenes/swamp.tscn" id="1_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://ypf8676ik73o" path="res://Scenes/player.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://ypf8676ik73o" path="res://Scenes/knight.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://b12vj4onrk1ov" path="res://Scenes/ice.tscn" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://crvujxcpr2o6a" path="res://Scenes/ruins.tscn" id="3_wowpa"]
 [ext_resource type="PackedScene" uid="uid://crrngobdig7vj" path="res://Scenes/frog.tscn" id="4_3dryh"]
@@ -26,8 +26,10 @@ position = Vector2(576, -319)
 
 [node name="Ruins" parent="." unique_id=1091255237 instance=ExtResource("3_wowpa")]
 position = Vector2(281.6, -823.455)
+metadata/_edit_lock_ = true
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="." unique_id=31237010]
+metadata/_edit_lock_ = true
 
 [node name="WorldBoundaryBottom" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1218207133]
 position = Vector2(0, 648)
@@ -43,22 +45,17 @@ position = Vector2(1152, 324)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-[node name="Frog" parent="." unique_id=680118027 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("4_3dryh")]
+[node name="Frog" parent="." unique_id=680118027 instance=ExtResource("4_3dryh")]
 position = Vector2(237, 429)
+
+[node name="Knight" parent="." unique_id=1232959386 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("2_qxrlw")]
+position = Vector2(157, 448)
 healthDisplay = NodePath("../HUD/Health Display")
 gameOver = NodePath("../GameOver")
 
-[node name="Camera2D" type="Camera2D" parent="Frog" unique_id=134203566]
-limit_left = 0
-limit_right = 1150
-limit_bottom = 648
-
-[node name="Player" parent="." unique_id=1232959386 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("2_qxrlw")]
-position = Vector2(201, 414)
-healthDisplay = NodePath("../HUD/Health Display")
-gameOver = NodePath("../GameOver")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1178984784]
+[node name="Camera2D" type="Camera2D" parent="Knight" unique_id=134203566]
+position = Vector2(-44, -10.666626)
+scale = Vector2(1.3333334, 1.3333334)
 limit_left = 0
 limit_right = 1150
 limit_bottom = 648
@@ -72,7 +69,7 @@ transform = Transform2D(1, 0, 0, 1, 15.71, 15.3)
 [node name="PauseMenu" parent="." unique_id=1851816575 instance=ExtResource("6_pm")]
 visible = false
 
-[node name="GameOver" parent="." unique_id=1777932174 instance=ExtResource("8_govr")]
+[node name="GameOver" parent="." unique_id=596184978 instance=ExtResource("8_govr")]
 
 [node name="Bat" parent="." unique_id=1947315516 node_paths=PackedStringArray("frog_player", "knight_player") instance=ExtResource("9_h4fw4")]
 position = Vector2(629, 273)
