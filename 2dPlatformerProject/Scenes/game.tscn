@@ -14,14 +14,17 @@
 [node name="Game" type="Node2D" unique_id=1793699421]
 script = ExtResource("7_game")
 
-[node name="Swamp" parent="." unique_id=565414417 instance=ExtResource("1_wrm1d")]
+[node name="Levels" type="Node2D" parent="." unique_id=1151897814]
+unique_name_in_owner = true
+
+[node name="Swamp" parent="Levels" unique_id=565414417 instance=ExtResource("1_wrm1d")]
 position = Vector2(576, 328)
 scale = Vector2(2, 2)
 
-[node name="Ice" parent="." unique_id=745608814 instance=ExtResource("2_wrm1d")]
+[node name="Ice" parent="Levels" unique_id=745608814 instance=ExtResource("2_wrm1d")]
 position = Vector2(576, -319)
 
-[node name="Ruins" parent="." unique_id=1091255237 instance=ExtResource("3_wowpa")]
+[node name="Ruins" parent="Levels" unique_id=1091255237 instance=ExtResource("3_wowpa")]
 position = Vector2(281.6, -823.455)
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="." unique_id=31237010]
