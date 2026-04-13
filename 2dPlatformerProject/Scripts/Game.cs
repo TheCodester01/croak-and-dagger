@@ -26,7 +26,5 @@ public partial class Game : Node2D
 				key_count += 1;
 			}
 		}
-
-		GD.Print(key_count);
 	}
 }
