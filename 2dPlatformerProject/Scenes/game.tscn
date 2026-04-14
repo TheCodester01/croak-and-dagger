@@ -65,11 +65,6 @@ limit_left = 0
 limit_right = 1150
 limit_bottom = 648
 
-[node name="Frog" parent="." unique_id=680118027 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("4_3dryh")]
-position = Vector2(237, 429)
-healthDisplay = NodePath("../HUD/Health Display")
-gameOver = NodePath("../GameOver")
-
 [node name="HUD" parent="." unique_id=170314823 instance=ExtResource("5_hud")]
 
 [node name="Health Display" parent="HUD" unique_id=852095536 instance=ExtResource("7_ldgsr")]
