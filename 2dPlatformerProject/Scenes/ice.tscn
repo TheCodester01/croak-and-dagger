@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bgvpmeg4jccno" path="res://Assets/Ice Assets/3 Objects/Pointers/3.png" id="9_g0b66"]
 [ext_resource type="PackedScene" uid="uid://1tmymg0cijtq" path="res://Scenes/moving_platform_ice.tscn" id="11_0bdap"]
 [ext_resource type="PackedScene" uid="uid://bnacioi757epj" path="res://Scenes/heart_item.tscn" id="12_0bdap"]
+[ext_resource type="PackedScene" uid="uid://505l4fowiwt2" path="res://Scenes/key.tscn" id="13_tblcl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uice2"]
 tile_data = PackedInt32Array(65536, 786493, 9, 1, 852029, 8, 65537, 852029, 9, 2, 917565, 8, 65538, 917565, 9, 65539, 983101, 9)
@@ -594,3 +595,6 @@ autostart = true
 
 [node name="HeartItem" parent="." unique_id=877193100 instance=ExtResource("12_0bdap")]
 position = Vector2(-89, 193)
+
+[node name="Key" parent="." unique_id=1852604735 instance=ExtResource("13_tblcl")]
+position = Vector2(493, -282)

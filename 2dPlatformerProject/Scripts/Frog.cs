@@ -41,6 +41,93 @@ public partial class Frog : CharacterBody2D
 	[Export]
 	public GameOver gameOver;
 
+    public override void _Ready()
+    {
+        anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        _hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        Vector2 velocity = Velocity;
+
+        // Handle damage cooldown
+        if (TookDamage)
+        {
+            TimeSinceLastDamage += (float)delta;
+
+            if (TimeSinceLastDamage >= SecondsBetweenDamage)
+            {
+                TookDamage = false;
+                TimeSinceLastDamage = 0.0f;
+            }
+        }
+
+        // Add the gravity.
+        if (!IsOnFloor())
+        {
+            velocity += GetGravity() * (float)delta;
+        }
+
+        // Handle jump power
+        if (IsOnFloor())
+        {
+            velocity.X = 0;
+
+            if (Input.IsActionPressed("ui_accept"))
+            {
+                float t = Mathf.Clamp(this.JumpPowerElapsedTime / this.JumpPowerMaxSeconds, 0.0f, 1.0f);
+                this.JumpPower = Mathf.Lerp(this.JumpPowerMinimum, 1.0f, t);
+
+                this.JumpPowerElapsedTime += (float)delta;
+            }
+            else
+            {
+                this.JumpPowerElapsedTime = 0;
+            }
+        }
+
+        // Handle Jump.
+        if (Input.IsActionJustReleased("ui_accept") && IsOnFloor())
+        {
+            velocity.Y = JumpVelocity * this.JumpPower;
+
+            if (Input.IsActionPressed("ui_left"))
+            {
+                velocity.X = -HorizontalVelocity;
+            }
+            else if (Input.IsActionPressed("ui_right"))
+            {
+                velocity.X = HorizontalVelocity;
+            }
+        }
+
+        Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+
+        if (!(anim_sprite.IsPlaying() && anim_sprite.Animation == "hit"))
+        {
+            if (velocity.Y < 0)
+            {
+                anim_sprite.Animation = "jump";
+            }
+            else if (velocity.Y > 0)
+            {
+                anim_sprite.Animation = "fall";
+            }
+            else
+            {
+                anim_sprite.Animation = "idle";
+            }
+
+            anim_sprite.FlipH = direction.X < 0.0;
+
+            anim_sprite.Play();
+        }
+
+        Velocity = velocity;
+        MoveAndSlide();
+    }
+
     // Call this when collided with enemy
     public void TakeDamage() {
 		if (!TookDamage && CurrentHearts > 0)
@@ -87,81 +174,4 @@ public partial class Frog : CharacterBody2D
                 area.QueueFree(); // This deletes the item node from the scene
         }
     }
-
-    public override void _Ready()
-    {
-        anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        _hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
-    }
-
-    public override void _PhysicsProcess(double delta)
-	{
-		Vector2 velocity = Velocity;
-
-        // Handle damage cooldown
-        if (TookDamage)
-		{
-            TimeSinceLastDamage += (float)delta;
-
-            if (TimeSinceLastDamage >= SecondsBetweenDamage)
-            {
-                TookDamage = false;
-                TimeSinceLastDamage = 0.0f;
-            }
-        }
-
-        // Add the gravity.
-        if (!IsOnFloor())
-		{
-			velocity += GetGravity() * (float)delta;
-		}
-		
-		// Handle jump power
-		if (IsOnFloor()) {
-			velocity.X = 0;
-			
-  			if (Input.IsActionPressed("ui_accept")) {
-				float t = Mathf.Clamp(this.JumpPowerElapsedTime / this.JumpPowerMaxSeconds, 0.0f, 1.0f);
-				this.JumpPower = Mathf.Lerp(this.JumpPowerMinimum, 1.0f, t);
-				
-				this.JumpPowerElapsedTime += (float)delta;
-			} else {
-				this.JumpPowerElapsedTime = 0;
-			}
-		}
-		
-		// Handle Jump.
-		if (Input.IsActionJustReleased("ui_accept") && IsOnFloor()) {
-			velocity.Y = JumpVelocity * this.JumpPower;
-			
-			if (Input.IsActionPressed("ui_left")) {
-				velocity.X = -HorizontalVelocity;
-			} else if (Input.IsActionPressed("ui_right")) {
-				velocity.X = HorizontalVelocity;
-			}
-		}
-
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-
-		if (!(anim_sprite.IsPlaying() && anim_sprite.Animation == "hit")) {
-			if (velocity.Y < 0)
-			{
-				anim_sprite.Animation = "jump";
-			}
-			else if (velocity.Y > 0) {
-				anim_sprite.Animation = "fall";
-			}
-			else
-			{
-				anim_sprite.Animation = "idle";
-			}
-
-			anim_sprite.FlipH = direction.X < 0.0;
-
-			anim_sprite.Play();
-		}
-
-		Velocity = velocity;
-		MoveAndSlide();
-	}
 }
