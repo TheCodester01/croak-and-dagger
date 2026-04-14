@@ -6,13 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://jra8vcxd8l3t" path="res://Assets/Ice Assets/1 Tiles/Tileset.png" id="2_g02c5"]
 [ext_resource type="Texture2D" uid="uid://crmm4ty3cirfb" path="res://Assets/Ice Assets/4 Animated objects/Flag.png" id="3_u7iie"]
 [ext_resource type="Texture2D" uid="uid://bmcajb2e6qtwv" path="res://Assets/Ice Assets/3 Objects/Trees/1.png" id="4_jf77p"]
-[ext_resource type="PackedScene" uid="uid://1tmymg0cijtq" path="res://Scenes/moving_platform_ice.tscn" id="4_rtyq4"]
 [ext_resource type="Texture2D" uid="uid://rl8egsd4ejlh" path="res://Assets/Ice Assets/3 Objects/Pointers/7.png" id="5_clp2u"]
 [ext_resource type="Texture2D" uid="uid://k45amohuolpm" path="res://Assets/Ice Assets/3 Objects/Bushes/3.png" id="7_g0b66"]
 [ext_resource type="Texture2D" uid="uid://by1aoyr623q8n" path="res://Assets/Ice Assets/3 Objects/Igloo/1.png" id="8_rtyq4"]
 [ext_resource type="Texture2D" uid="uid://bgvpmeg4jccno" path="res://Assets/Ice Assets/3 Objects/Pointers/3.png" id="9_g0b66"]
-[ext_resource type="PackedScene" uid="uid://1tmymg0cijtq" path="res://Scenes/moving_platform.tscn" id="11_0bdap"]
+[ext_resource type="PackedScene" uid="uid://1tmymg0cijtq" path="res://Scenes/moving_platform_ice.tscn" id="11_0bdap"]
 [ext_resource type="PackedScene" uid="uid://bnacioi757epj" path="res://Scenes/heart_item.tscn" id="12_0bdap"]
+[ext_resource type="PackedScene" uid="uid://505l4fowiwt2" path="res://Scenes/key.tscn" id="13_tblcl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uice2"]
 tile_data = PackedInt32Array(65536, 786493, 9, 1, 852029, 8, 65537, 852029, 9, 2, 917565, 8, 65538, 917565, 9, 65539, 983101, 9)
@@ -546,11 +546,11 @@ tile_map_data = PackedByteArray("AADc/xMAPQABAAEAAADd/xMAPQABAAEAAADe/xMAPQABAAE
 tile_set = SubResource("TileSet_u7iie")
 metadata/_edit_lock_ = true
 
-[node name="Moving Platform" parent="." unique_id=2059025927 instance=ExtResource("4_rtyq4")]
+[node name="Moving Platform" parent="." unique_id=2059025927 instance=ExtResource("11_0bdap")]
 position = Vector2(-270, 265)
 animation = "move"
 
-[node name="Moving Platform 1" parent="." unique_id=1275512942 instance=ExtResource("4_rtyq4")]
+[node name="Moving Platform 1" parent="." unique_id=1275512942 instance=ExtResource("11_0bdap")]
 unique_name_in_owner = true
 position = Vector2(-32, -42)
 animation = "move"
@@ -592,5 +592,9 @@ unique_name_in_owner = true
 wait_time = 0.75
 one_shot = true
 autostart = true
+
 [node name="HeartItem" parent="." unique_id=877193100 instance=ExtResource("12_0bdap")]
 position = Vector2(-89, 193)
+
+[node name="Key" parent="." unique_id=1852604735 instance=ExtResource("13_tblcl")]
+position = Vector2(493, -282)

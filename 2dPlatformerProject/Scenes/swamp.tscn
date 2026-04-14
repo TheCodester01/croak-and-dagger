@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d4b3a1suinnwd" path="res://Assets/Swamp/Background.png" id="1_15wb5"]
 [ext_resource type="Texture2D" uid="uid://bf55qd7rffnhl" path="res://Assets/Swamp/Tileset.png" id="2_jdxqy"]
 [ext_resource type="PackedScene" uid="uid://bqmq30o8iytrq" path="res://Scenes/moving_platform_swamp.tscn" id="3_qjw4w"]
+[ext_resource type="PackedScene" uid="uid://505l4fowiwt2" path="res://Scenes/key.tscn" id="4_1eh1j"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_15wb5"]
 tile_data = PackedInt32Array(0, 131072, 6, 65536, 131072, 7, 1, 196608, 6, 65537, 196608, 7, 2, 262144, 6, 65538, 262144, 7, 3, 327680, 6, 65539, 327680, 7, 4, 393216, 6, 65540, 393216, 7, 5, 458752, 6, 65541, 458752, 7)
@@ -470,3 +471,7 @@ tile_set = SubResource("TileSet_ciyri")
 
 [node name="Moving Platform2" parent="." unique_id=1094997037 instance=ExtResource("3_qjw4w")]
 animation = "move_diagonally"
+
+[node name="Key" parent="." unique_id=1852604735 instance=ExtResource("4_1eh1j")]
+position = Vector2(201, 129)
+scale = Vector2(0.5, 0.5)

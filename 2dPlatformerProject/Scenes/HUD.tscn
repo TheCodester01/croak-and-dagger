@@ -1,17 +1,26 @@
-[gd_scene format=3 uid="uid://hud_scene"]
+[gd_scene format=3 uid="uid://bmldmkpb6ly12"]
 
-[ext_resource type="Script" path="res://Scripts/HUD.cs" id="1_hud"]
+[ext_resource type="Script" uid="uid://cqng2xpjo067i" path="res://Scripts/HUD.cs" id="1_hud"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=170314823]
 script = ExtResource("1_hud")
 
-[node name="TimerLabel" type="Label" parent="."]
+[node name="TimerLabel" type="Label" parent="." unique_id=603227671]
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -120.0
-offset_right = -10.0
 offset_top = 10.0
+offset_right = -10.0
 offset_bottom = 50.0
+theme_override_font_sizes/font_size = 28
 text = "00:00"
 horizontal_alignment = 2
-theme_override_font_sizes/font_size = 28
+
+[node name="KeyCount" type="Label" parent="." unique_id=439119446]
+offset_left = 6.0
+offset_top = 31.0
+offset_right = 201.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 20
+text = "Keys: 0/0"

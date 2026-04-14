@@ -27,6 +27,7 @@ project/assembly_name="2D-Platformer-Project"
 
 enemy=""
 heart=""
+key=""
 
 [input]
 
