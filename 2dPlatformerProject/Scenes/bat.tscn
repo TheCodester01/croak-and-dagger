@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbbtgdh657nh1"]
 
-[ext_resource type="Script" uid="uid://wac5jatabrg0" path="res://Scenes/Bat.cs" id="1_s1ovm"]
+[ext_resource type="Script" uid="uid://wac5jatabrg0" path="res://Scripts/Bat.cs" id="1_s1ovm"]
 [ext_resource type="Texture2D" uid="uid://dft6cgq0xnnd7" path="res://Assets/Bat/Attack1/Bat-Attack1_row-1-column-1.png" id="1_s2wjm"]
 [ext_resource type="Texture2D" uid="uid://di7w68dp0m6u4" path="res://Assets/Bat/Attack1/Bat-Attack1_row-1-column-2.png" id="2_s1ovm"]
 [ext_resource type="Texture2D" uid="uid://cejwwt3h7l8r0" path="res://Assets/Bat/Attack1/Bat-Attack1_row-1-column-3.png" id="3_i1c8n"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b2yrilgj2ahk4" path="res://Assets/Bat/Idle/Bat-IdleFly_row-1-column-7.png" id="15_6pama"]
 [ext_resource type="Texture2D" uid="uid://d21yyqxk57a3b" path="res://Assets/Bat/Idle/Bat-IdleFly_row-1-column-8.png" id="16_xgd1q"]
 [ext_resource type="Texture2D" uid="uid://bs4nb36wcpk5n" path="res://Assets/Bat/Idle/Bat-IdleFly_row-1-column-9.png" id="17_m8x0a"]
+
 
 [sub_resource type="Animation" id="Animation_dlun1"]
 length = 0.001
