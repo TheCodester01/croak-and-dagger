@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://whntob6vyyus" path="res://Scripts/Game.cs" id="7_game"]
 [ext_resource type="PackedScene" uid="uid://do4g16koaxdq7" path="res://Scenes/health_display.tscn" id="7_ldgsr"]
 [ext_resource type="PackedScene" path="res://Scenes/GameOver.tscn" id="8_govr"]
-[ext_resource type="PackedScene" uid="uid://cbbtgdh657nh1" path="res://Scenes/bat.tscn" id="9_h4fw4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wrm1d"]
 
@@ -75,8 +74,3 @@ transform = Transform2D(1, 0, 0, 1, 17, 15)
 visible = false
 
 [node name="GameOver" parent="." unique_id=596184978 instance=ExtResource("8_govr")]
-
-[node name="Bat" parent="." unique_id=1947315516 node_paths=PackedStringArray("frog_player", "knight_player") instance=ExtResource("9_h4fw4")]
-position = Vector2(629, 273)
-frog_player = NodePath("../Frog")
-knight_player = NodePath("../Knight")
