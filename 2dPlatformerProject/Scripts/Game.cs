@@ -4,7 +4,7 @@ public partial class Game : Node2D
 {
     private int player_keys;
 	public HUD hud;
-	public CharacterBody2D selected_character { get; private set; }
+	public Player selected_character { get; private set; }
 	public int KeyCount { get; private set; }
 
 	private Bat bat;
@@ -21,7 +21,7 @@ public partial class Game : Node2D
 	{
 		var frog = GetNode<Node2D>("Frog");
 		var knight = GetNode<Node2D>("Knight");
-		selected_character = GetNode<CharacterBody2D>($"{GameManager.Instance.SelectedCharacter}");
+		selected_character = GetNode<Player>($"{GameManager.Instance.SelectedCharacter}");
 		Bat.player = selected_character;
 		hud = GetNode<HUD>("HUD");
 

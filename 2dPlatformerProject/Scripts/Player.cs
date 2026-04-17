@@ -3,8 +3,8 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	const int SecondsBetweenDamage = 1;
-	const float KnockbackVelocityY = -200.0f;
+	const float SecondsBetweenDamage = .200f;
+	const float KnockbackVelocityY = -400.0f;
 
 	[Export]
 	private HealthDisplay healthDisplay;
@@ -71,7 +71,7 @@ public partial class Player : CharacterBody2D
 
 	public virtual void _on_area_2d_area_entered(Area2D area)
 	{
-		if (area.IsInGroup("enemy"))
+		if (area.IsInGroup("damage_player"))
 		{
 			TakeDamage();
 		}

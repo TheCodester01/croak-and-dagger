@@ -43,7 +43,9 @@ position = Vector2(1152, 324)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1218207133]
+[node name="WorldBoundaryBottom" type="Area2D" parent="WorldBoundaries" unique_id=725508446 groups=["damage_player"]]
+
+[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="WorldBoundaries/WorldBoundaryBottom" unique_id=1218207133]
 position = Vector2(0, 648)
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
