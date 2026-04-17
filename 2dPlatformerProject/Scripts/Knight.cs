@@ -1,47 +1,18 @@
 using Godot;
 using System;
 
-public partial class Knight : CharacterBody2D
+public partial class Knight : Player
 {
     public const float Speed = 300.0f;
     public const float SprintMultiplier = 1.5f;
     public const float JumpVelocity = -500.0f;
     bool is_sprinting = false;
     bool jumped = false;
-    private AnimatedSprite2D anim_sprite;
     private int facing_dir = 1;
-    private AudioStreamPlayer _hurtSound;
-    private Game game;
-
-    [Export]
-    public int CurrentHearts = 3;
-
-    [Export]
-    public int MaxHearts = 3;
-
-    [Export]
-    public int SecondsBetweenDamage = 1;
-
-    private float TimeSinceLastDamage = 0.0f;
-
-    private bool TookDamage = false;
-
-    [Export]
-    public HealthDisplay healthDisplay;
-
-    [Export]
-    public GameOver gameOver;
-
-    public override void _Ready()
-    {
-        anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        _hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
-        game = GetParent<Game>();
-    }
 
     public override void _Process(double delta)
     {
-        if (!(anim_sprite.IsPlaying() && anim_sprite.Animation == "hit"))
+        if (!(anim_sprite.IsPlaying() && anim_sprite.Animation == "hit") && !IsInKnockback())
         {
             if (!IsOnFloor())
             {
@@ -70,27 +41,19 @@ public partial class Knight : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        base._PhysicsProcess(delta); // Call Player's physics process first
+
         Vector2 direction = Input.GetVector("left", "right", "ui_up", "ui_down"); // Get the input direction and handle the movement/deceleration.
         Vector2 velocity = Velocity;
         is_sprinting = Input.IsActionPressed("sprint") && IsOnFloor();
-
-        // Handle damage cooldown
-        if (TookDamage)
-        {
-            TimeSinceLastDamage += (float)delta;
-
-            if (TimeSinceLastDamage >= SecondsBetweenDamage)
-            {
-                TookDamage = false;
-                TimeSinceLastDamage = 0.0f;
-            }
-        }
 
         // Add the gravity.
         if (!IsOnFloor())
         {
             velocity += GetGravity() * (float)delta;
         }
+
+        Vector2 PreMoveVelocity = velocity;
 
         // If not standing still
         if (direction != Vector2.Zero)
@@ -120,63 +83,16 @@ public partial class Knight : CharacterBody2D
         }
 
 
-        Velocity = velocity;
+        if (!IsInKnockback())
+        {
+            Velocity = velocity;
+        }
+        else
+        {
+            Velocity = PreMoveVelocity;
+        }
+
         MoveAndSlide();
-    }
-
-// Call this when collided with enemy
-    public void TakeDamage()
-    {
-        if (!TookDamage && CurrentHearts > 0)
-        {
-            CurrentHearts--;
-            anim_sprite.Play("hit");
-            _hurtSound.Play();
-            var heartSprite = healthDisplay.TakeDamage();
-            TookDamage = true;
-
-            if (CurrentHearts <= 0)
-                ShowGameOverAfterAnimation(heartSprite);
-        }
-    }
-
-    private async void ShowGameOverAfterAnimation(AnimatedSprite2D heartSprite)
-    {
-        await ToSignal(anim_sprite, AnimatedSprite2D.SignalName.AnimationFinished);
-        if (heartSprite != null && heartSprite.IsPlaying())
-            await ToSignal(heartSprite, AnimatedSprite2D.SignalName.AnimationFinished);
-        gameOver.ShowGameOver();
-    }
-
-    // Call this when collided with heart item
-    public bool AddHeart()
-    {
-        if (CurrentHearts < MaxHearts)
-        {
-            CurrentHearts++;
-            healthDisplay.Recover();
-            return true;
-        }
-
-        return false;
-    }
-
-    public void _on_area_2d_area_entered(Area2D area)
-    {
-        if (area.IsInGroup("damage_player"))
-        {
-            TakeDamage();
-        }
-        else if (area.IsInGroup("heart"))
-        {
-            if (AddHeart())
-                area.QueueFree(); // This deletes the item node from the scene
-        }
-        else if (area.IsInGroup("key"))
-        {
-            area.QueueFree();
-            game.PlayerKeys += 1;
-        }
     }
 
     public override void _UnhandledInput(InputEvent @event)

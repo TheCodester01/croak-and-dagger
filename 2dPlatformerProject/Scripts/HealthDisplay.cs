@@ -3,14 +3,15 @@ using System;
 
 public partial class HealthDisplay : CanvasLayer
 {
+    public const int MaxHearts = 3;
     private BoxContainer hearts;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
+    {
         hearts = GetNode<BoxContainer>("Hearts");
     }
-    
+
     public AnimatedSprite2D TakeDamage()
     {
         for (int i = hearts.GetChildCount() - 1; i >= 0; i--)
