@@ -33,10 +33,6 @@ metadata/_edit_lock_ = true
 [node name="WorldBoundaries" type="StaticBody2D" parent="." unique_id=31237010]
 metadata/_edit_lock_ = true
 
-[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1218207133]
-position = Vector2(0, 648)
-shape = SubResource("WorldBoundaryShape2D_wrm1d")
-
 [node name="WorldBoundaryLeft" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1755164291]
 position = Vector2(0, 324)
 rotation = 1.5707964
@@ -45,6 +41,10 @@ shape = SubResource("WorldBoundaryShape2D_wrm1d")
 [node name="WorldBoundaryRight" type="CollisionShape2D" parent="WorldBoundaries" unique_id=2135359376]
 position = Vector2(1152, 324)
 rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_wrm1d")
+
+[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1218207133]
+position = Vector2(0, 648)
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
 [node name="Frog" parent="." unique_id=680118027 node_paths=PackedStringArray("healthDisplay", "gameOver") instance=ExtResource("4_3dryh")]

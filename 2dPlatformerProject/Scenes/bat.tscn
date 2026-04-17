@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://d21yyqxk57a3b" path="res://Assets/Bat/Idle/Bat-IdleFly_row-1-column-8.png" id="16_xgd1q"]
 [ext_resource type="Texture2D" uid="uid://bs4nb36wcpk5n" path="res://Assets/Bat/Idle/Bat-IdleFly_row-1-column-9.png" id="17_m8x0a"]
 
-
 [sub_resource type="Animation" id="Animation_dlun1"]
 length = 0.001
 tracks/0/type = "value"
@@ -309,14 +308,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16es4"]
 size = Vector2(27.65625, 16.4375)
 
-[node name="Bat" type="Node2D" unique_id=1947315516]
+[node name="Bat" type="Node2D" unique_id=1947315516 groups=["damage_player"]]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_s1ovm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=377214692]
 root_node = NodePath("../Area2D")
 libraries/ = SubResource("AnimationLibrary_qaib8")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1678640536 groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=1678640536 groups=["damage_player"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=532418801]
 sprite_frames = SubResource("SpriteFrames_xtqn3")

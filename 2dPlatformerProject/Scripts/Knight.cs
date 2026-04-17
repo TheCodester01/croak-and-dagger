@@ -163,7 +163,7 @@ public partial class Knight : CharacterBody2D
 
     public void _on_area_2d_area_entered(Area2D area)
     {
-        if (area.IsInGroup("enemy"))
+        if (area.IsInGroup("damage_player"))
         {
             TakeDamage();
         }

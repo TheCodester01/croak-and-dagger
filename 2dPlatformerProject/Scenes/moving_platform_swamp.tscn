@@ -11,7 +11,7 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Moving Platform:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -19,30 +19,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Moving Platform:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-222.26718, -35.72719)]
 }
 
 [sub_resource type="Animation" id="Animation_ird8g"]
@@ -70,13 +46,13 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Moving Platform:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-222.26718, -35.72719), Vector2(-122.267, -135.727)]
+"values": [Vector2(0, 0), Vector2(122.267, -135.727)]
 }
 
 [sub_resource type="Animation" id="Animation_srb5e"]
@@ -134,11 +110,11 @@ _data = {
 }
 
 [node name="Moving Platform" type="Node2D" unique_id=1094997037]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_a6gem")
 
 [node name="Moving Platform" type="AnimatableBody2D" parent="." unique_id=1362279035]
 unique_name_in_owner = true
-position = Vector2(-222.26718, -35.72719)
 
 [node name="Platform" type="Sprite2D" parent="Moving Platform" unique_id=1699134966]
 texture = ExtResource("1_oevb3")
@@ -147,7 +123,6 @@ region_rect = Rect2(192, 0, 96, 16)
 region_filter_clip_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Moving Platform" unique_id=193307570]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_a6gem")
 
 [node name="Platform Move" type="AnimationPlayer" parent="." unique_id=11449639]
