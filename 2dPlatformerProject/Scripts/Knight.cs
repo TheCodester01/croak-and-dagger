@@ -53,8 +53,6 @@ public partial class Knight : Player
             velocity += GetGravity() * (float)delta;
         }
 
-        Vector2 PreMoveVelocity = velocity;
-
         // If not standing still
         if (direction != Vector2.Zero)
         {
@@ -89,7 +87,7 @@ public partial class Knight : Player
         }
         else
         {
-            Velocity = PreMoveVelocity;
+            Velocity = GetKnockback();
         }
 
         MoveAndSlide();

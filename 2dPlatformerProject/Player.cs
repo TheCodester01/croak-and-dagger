@@ -3,7 +3,11 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	const int SecondsBetweenDamage = 1;
+    const int SecondsBetweenDamage = 1;
+
+	[Export]
+    private int SecondsBetweenFogDamage = 3;
+    
 	const float KnockbackVelocityY = -200.0f;
 
 	[Export]
@@ -12,14 +16,22 @@ public partial class Player : CharacterBody2D
 	[Export]
 	private GameOver gameOver;
 
+	[Export]
+	private Fog fog;
+
 	public int Hearts { get; private set; } = HealthDisplay.MaxHearts;
 	private Game game;
 	protected AnimatedSprite2D anim_sprite;
 	private AudioStreamPlayer _hurtSound;
 	private bool TookDamage = false;
+	private bool TookDamageFog = false;
 	private float TimeSinceLastDamage = 0.0f;
+	private float TimeSinceLastFogDamage = 0.0f;
 
-	public override void _Ready()
+	private Vector2 Knockback;
+	private float KnockbackDurationSecs = 0f;
+
+    public override void _Ready()
 	{
 		game = GetParent<Game>(); ;
 		anim_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -28,34 +40,41 @@ public partial class Player : CharacterBody2D
 
 	public bool IsInKnockback()
 	{
-		return TookDamage && Velocity.Length() != 0.0f;
+		return KnockbackDurationSecs > 0.0f;
 	}
 
-	public virtual void OnTakeDamage()
+	public Vector2 GetKnockback()
+    {
+        return Knockback;
+    }
+
+    public void ApplyKnockback(Vector2 direction, float force, float durationSecs)
+    {
+        Knockback = direction * force;
+        KnockbackDurationSecs = durationSecs;
+    }
+
+    public virtual bool TakeDamage(bool is_fog = false)
 	{
-		if (Hearts > 0)
-		{
-			Velocity = new Vector2(Velocity.X * -0.25f, Math.Min(Velocity.Y, KnockbackVelocityY));
-		}
-
-
-	}
-
-	public virtual void TakeDamage()
-	{
-		if (!TookDamage && Hearts > 0)
+		if (!(is_fog ? TookDamageFog : TookDamage) && Hearts > 0)
 		{
 			Hearts--;
 			anim_sprite.Play("hit");
 			_hurtSound.Play();
 			var heartSprite = healthDisplay.TakeDamage();
-			TookDamage = true;
+
+			if (is_fog)
+                TookDamageFog = true;
+            else
+                TookDamage = true;
 
 			if (Hearts <= 0)
 				ShowGameOverAfterAnimation(heartSprite);
 
-			OnTakeDamage();
+			return true;
 		}
+
+		return false;
 	}
 	public virtual bool AddHeart()
 	{
@@ -73,7 +92,11 @@ public partial class Player : CharacterBody2D
 	{
 		if (area.IsInGroup("enemy"))
 		{
-			TakeDamage();
+            if (TakeDamage())
+            {
+                var knockback_dir = (this.GlobalPosition - area.GlobalPosition).Normalized();
+                ApplyKnockback(knockback_dir, 300.0f, 0.2f);
+            }
 		}
 		else if (area.IsInGroup("heart"))
 		{
@@ -89,18 +112,43 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+        // Handle fog
+        if (this.GlobalPosition.Y > fog.FogPositionY)
+        {
+			if (this.TakeDamage(true))
+            {
+                ApplyKnockback(new Vector2(0.0f, -1.0f), 300.0f, 0.15f);
+			}
+        }
+        
 		// Handle damage cooldown
-		if (TookDamage)
+        if (TookDamage)
 		{
 			TimeSinceLastDamage += (float)delta;
 
 			if (TimeSinceLastDamage >= SecondsBetweenDamage)
 			{
 				TookDamage = false;
-				TimeSinceLastDamage = 0.0f;
+                TimeSinceLastDamage = 0.0f;
 			}
 		}
-	}
+
+        if (TookDamageFog)
+        {
+            TimeSinceLastFogDamage += (float)delta;
+
+            if (TimeSinceLastFogDamage >= SecondsBetweenFogDamage)
+            {
+                TookDamageFog = false;
+                TimeSinceLastFogDamage = 0.0f;
+            }
+        }
+
+		if (KnockbackDurationSecs > 0.0f)
+            KnockbackDurationSecs -= (float)delta;
+		else
+			Knockback = Vector2.Zero;
+    }
 
 	private async void ShowGameOverAfterAnimation(AnimatedSprite2D heartSprite)
 	{

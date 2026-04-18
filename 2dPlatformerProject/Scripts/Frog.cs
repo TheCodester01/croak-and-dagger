@@ -87,7 +87,11 @@ public partial class Frog : Player
             anim_sprite.Play();
         }
 
-        Velocity = velocity;
+        if (!IsInKnockback())
+            Velocity = velocity;
+        else
+            Velocity = GetKnockback();
+
         MoveAndSlide();
     }
 }
