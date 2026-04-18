@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://level_preview"]
+
+[ext_resource type="PackedScene" uid="uid://c74iyy88okafe" path="res://Scenes/swamp.tscn" id="1_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://b12vj4onrk1ov" path="res://Scenes/ice.tscn" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://crvujxcpr2o6a" path="res://Scenes/ruins.tscn" id="3_wowpa"]
+
+[node name="LevelPreview" type="Node2D"]
+
+[node name="Swamp" parent="." instance=ExtResource("1_wrm1d")]
+position = Vector2(576, 328)
+scale = Vector2(2, 2)
+
+[node name="Ice" parent="." instance=ExtResource("2_wrm1d")]
+position = Vector2(576, -319)
+
+[node name="Ruins" parent="." instance=ExtResource("3_wowpa")]
+position = Vector2(281.6, -823.455)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, -700)

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://settings_menu"]
+
+[ext_resource type="Script" path="res://Scripts/Settings.cs" id="1_set"]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_set")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_top = 80.0
+offset_bottom = 140.0
+text = "SOUND & SORCERY"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 36
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_right = 190.0
+offset_top = -150.0
+offset_bottom = 150.0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MusicLabel" type="Label" parent="VBox"]
+text = "Bardic Melodies"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="MusicSlider" type="HSlider" parent="VBox"]
+custom_minimum_size = Vector2(380, 40)
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SfxLabel" type="Label" parent="VBox"]
+text = "Battle Clamour"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="SfxSlider" type="HSlider" parent="VBox"]
+custom_minimum_size = Vector2(380, 40)
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="BackButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(380, 60)
+text = "Return to Keep"
+theme_override_font_sizes/font_size = 22

@@ -28,6 +28,6 @@ public partial class GameOver : CanvasLayer
     {
         GetTree().Paused = false;
         GameManager.Instance.ElapsedTime = 0.0f;
-        GetTree().ChangeSceneToFile("res://Scenes/CharacterSelect.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
     }
 }
