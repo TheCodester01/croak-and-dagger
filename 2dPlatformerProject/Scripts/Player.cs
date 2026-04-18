@@ -26,6 +26,20 @@ public partial class Player : CharacterBody2D
 		_hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
 	}
 
+	public override void _PhysicsProcess(double delta)
+	{
+        if (TookDamage)
+		{
+			TimeSinceLastDamage += (float)delta;
+
+			if (TimeSinceLastDamage >= SecondsBetweenDamage)
+			{
+				TookDamage = false;
+				TimeSinceLastDamage = 0.0f;
+			}
+		}
+	}
+
 	public bool IsInKnockback()
 	{
 		return TookDamage && Velocity.Length() != 0.0f;
@@ -37,8 +51,6 @@ public partial class Player : CharacterBody2D
 		{
 			Velocity = new Vector2(Velocity.X * -0.25f, Math.Min(Velocity.Y, KnockbackVelocityY));
 		}
-
-
 	}
 
 	public virtual void TakeDamage()
@@ -87,20 +99,6 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-		// Handle damage cooldown
-		if (TookDamage)
-		{
-			TimeSinceLastDamage += (float)delta;
-
-			if (TimeSinceLastDamage >= SecondsBetweenDamage)
-			{
-				TookDamage = false;
-				TimeSinceLastDamage = 0.0f;
-			}
-		}
-	}
 
 	private async void ShowGameOverAfterAnimation(AnimatedSprite2D heartSprite)
 	{

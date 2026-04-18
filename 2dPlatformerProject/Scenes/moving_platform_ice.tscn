@@ -32,6 +32,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moving Platform:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_g04cb"]
 resource_name = "move"
@@ -41,7 +53,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Moving Platform:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
@@ -79,11 +91,41 @@ tracks/1/keys = {
 "values": [0.0, 6.283185307179586]
 }
 
+[sub_resource type="Animation" id="Animation_j2v18"]
+resource_name = "move_shrink"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving Platform:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(330, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving Platform:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.25, 0.25)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j2v18"]
 _data = {
 &"RESET": SubResource("Animation_srb5e"),
 &"move": SubResource("Animation_g04cb"),
-&"move_rotate": SubResource("Animation_ird8g")
+&"move_rotate": SubResource("Animation_ird8g"),
+&"move_shrink": SubResource("Animation_j2v18")
 }
 
 [node name="Moving Platform" type="Node2D" unique_id=2059025927]
