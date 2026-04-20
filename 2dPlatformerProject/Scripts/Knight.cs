@@ -7,7 +7,7 @@ public partial class Knight : Player
     public const float SprintMultiplier = 1.5f;
     public const float JumpVelocity = -500.0f;
     bool is_sprinting = false;
-    bool jumped = false;
+    public bool jumped = false;
     private int facing_dir = 1;
 
     public override void _Process(double delta)
@@ -42,15 +42,41 @@ public partial class Knight : Player
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta); // Call Player's physics process first
-
         Vector2 direction = Input.GetVector("left", "right", "ui_up", "ui_down"); // Get the input direction and handle the movement/deceleration.
         Vector2 velocity = Velocity;
-        is_sprinting = Input.IsActionPressed("sprint") && IsOnFloor();
+        velocity.Y += GetGravity().Y * (float)delta; // Apply Gravity at all times
 
-        // Add the gravity.
-        if (!IsOnFloor())
+
+        Vector2 PreMoveVelocity = velocity;
+
+
+        if (IsOnFloor())
         {
-            velocity += GetGravity() * (float)delta;
+
+            if (GetFloorAngle() > .69f && (Position.Y < 0 && Position.Y > -648))
+            {
+                FloorStopOnSlope = false;
+                Vector2 normal = GetFloorNormal();
+                Vector2 slope_dir = new Vector2(normal.Y, -normal.X); // Gets perpendicular vector to normal (parallel to slope)
+                if (slope_dir.Dot(Vector2.Down) < 0) // Ensures that slope_dir is downhill and not uphill
+                {
+                    slope_dir = -slope_dir;
+                }
+                velocity += slope_dir * Game.Sliding_Multiplier * (float)delta;
+            }
+            else
+            {
+                FloorStopOnSlope = true;
+            }
+
+            is_sprinting = Input.IsActionPressed("sprint");
+            if (jumped)
+            {
+
+                velocity.Y = is_sprinting ? JumpVelocity * 1.10f : JumpVelocity;
+                jumped = false;
+            }
+
         }
 
         // If not standing still
@@ -74,12 +100,6 @@ public partial class Knight : Player
         }
 
         // Handle Jump.
-        if (jumped && IsOnFloor())
-        {
-            velocity.Y = is_sprinting ? JumpVelocity * 1.10f : JumpVelocity;
-            jumped = false;
-        }
-
 
         if (!IsInKnockback())
         {

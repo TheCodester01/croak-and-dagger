@@ -2,8 +2,11 @@ using Godot;
 
 public partial class Game : Node2D
 {
-	public HUD hud;
+	static public Game Instance { get; private set; }
+
     private int player_keys;
+	public HUD hud;
+	public Player selected_character { get; private set; }
 	public int KeyCount { get; private set; }
 	public int PlayerKeys {
 		get { return player_keys; }
@@ -13,16 +16,19 @@ public partial class Game : Node2D
 			hud.UpdateKeyCount();
 		}
 	}
+	static public float Sliding_Multiplier { get; private set; } = 10000.0f;
 
 	public override void _Ready()
 	{
 		var frog = GetNode<Node2D>("Frog");
-		var player = GetNode<Node2D>("Knight");
+		var knight = GetNode<Node2D>("Knight");
+		selected_character = GetNode<Player>($"{GameManager.Instance.SelectedCharacter}");
+		Bat.player = selected_character;
 		hud = GetNode<HUD>("HUD");
 
-		if (GameManager.Instance.SelectedCharacter == "frog")
+		if (GameManager.Instance.SelectedCharacter == "Frog")
 		{
-			player.QueueFree();
+			knight.QueueFree();
 		}
 		else
 		{
@@ -33,7 +39,13 @@ public partial class Game : Node2D
 		{
 			if(node.HasNode("Key"))
 			{
-				KeyCount += 1;
+				foreach (Node level_node in node.GetChildren())
+				{
+					if (level_node is Key)
+					{
+						KeyCount += 1;
+					}
+				}
 			}
 		}
 

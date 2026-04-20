@@ -38,6 +38,20 @@ public partial class Player : CharacterBody2D
 		_hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
 	}
 
+	public override void _PhysicsProcess(double delta)
+	{
+        if (TookDamage)
+		{
+			TimeSinceLastDamage += (float)delta;
+
+			if (TimeSinceLastDamage >= SecondsBetweenDamage)
+			{
+				TookDamage = false;
+				TimeSinceLastDamage = 0.0f;
+			}
+		}
+	}
+
 	public bool IsInKnockback()
 	{
 		return KnockbackDurationSecs > 0.0f;
@@ -90,7 +104,7 @@ public partial class Player : CharacterBody2D
 
 	public virtual void _on_area_2d_area_entered(Area2D area)
 	{
-		if (area.IsInGroup("enemy"))
+		if (area.IsInGroup("damage_player"))
 		{
             if (TakeDamage())
             {

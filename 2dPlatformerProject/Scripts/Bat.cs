@@ -20,12 +20,7 @@ public partial class Bat : Node2D
 	private AnimatedSprite2D animated_sprite;
 	private PatrolDirection patrolDirection = PatrolDirection.Left;
 
-	[Export]
-	public CharacterBody2D frog_player;
-	[Export]
-	public CharacterBody2D knight_player;
-
-	private CharacterBody2D player;
+	public static CharacterBody2D player;
 
 	[Export]
 	public float target_speed = 50.0f;
@@ -50,14 +45,6 @@ public partial class Bat : Node2D
 
 	public override void _Ready()
 	{
-		if (GameManager.Instance.SelectedCharacter == "frog")
-		{
-			player = frog_player;
-		}
-		else
-		{
-			player = knight_player;
-		}
 
 		animation_player = GetNode<AnimationPlayer>("AnimationPlayer");
 		animated_sprite = GetNode<AnimatedSprite2D>("Area2D/AnimatedSprite2D");

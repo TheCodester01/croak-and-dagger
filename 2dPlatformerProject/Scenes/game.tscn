@@ -20,6 +20,7 @@ script = ExtResource("7_game")
 
 [node name="Levels" type="Node2D" parent="." unique_id=1151897814]
 unique_name_in_owner = true
+metadata/_edit_lock_ = true
 
 [node name="Swamp" parent="Levels" unique_id=565414417 instance=ExtResource("1_wrm1d")]
 position = Vector2(576, 328)
@@ -39,10 +40,6 @@ transform = Transform2D(1, 0, 0, 1, 0, -1296)
 [node name="WorldBoundaries" type="StaticBody2D" parent="." unique_id=31237010]
 metadata/_edit_lock_ = true
 
-[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1218207133]
-position = Vector2(0, 648)
-shape = SubResource("WorldBoundaryShape2D_wrm1d")
-
 [node name="WorldBoundaryLeft" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1755164291]
 position = Vector2(0, 324)
 rotation = 1.5707964
@@ -54,6 +51,12 @@ rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
 [node name="Frog" parent="." unique_id=680118027 node_paths=PackedStringArray("healthDisplay", "gameOver", "fog") instance=ExtResource("4_3dryh")]
+[node name="WorldBoundaryBottom" type="Area2D" parent="WorldBoundaries" unique_id=725508446 groups=["damage_player"]]
+
+[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="WorldBoundaries/WorldBoundaryBottom" unique_id=1218207133]
+position = Vector2(0, 648)
+shape = SubResource("WorldBoundaryShape2D_wrm1d")
+
 position = Vector2(237, 429)
 healthDisplay = NodePath("../HUD/Health Display")
 gameOver = NodePath("../GameOver")
@@ -69,6 +72,7 @@ fog = NodePath("../Fog")
 position = Vector2(-44, -10.666626)
 scale = Vector2(1.3333334, 1.3333334)
 limit_left = 0
+limit_top = -1604
 limit_right = 1150
 limit_bottom = 648
 

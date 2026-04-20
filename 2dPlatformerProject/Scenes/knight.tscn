@@ -70,7 +70,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -172,14 +172,13 @@ animations = [{
 radius = 21.0
 height = 60.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1232959386]
+[node name="Player" type="CharacterBody2D" unique_id=1232959386 groups=["Player"]]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_efrwb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=63538264]
 position = Vector2(33, -34)
 sprite_frames = SubResource("SpriteFrames_h6w8y")
-animation = &"dead"
 animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2085957696]
