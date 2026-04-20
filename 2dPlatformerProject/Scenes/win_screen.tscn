@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bj07u1qacht61"]
+
+[ext_resource type="Script" uid="uid://b3jduwn3qwn0s" path="res://Scripts/WinScreen.cs" id="1_l5sol"]
+
+[node name="WinScreen" type="Control" unique_id=910737921]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l5sol")
+
+[node name="Background" type="ColorRect" parent="." unique_id=467895677]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="Title" type="Label" parent="." unique_id=228595180]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "You Win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="." unique_id=1508778862]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 194.0
+offset_right = 200.0
+offset_bottom = 254.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Your time: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="." unique_id=1635236901]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 0
+offset_left = 429.0
+offset_top = 371.0
+offset_right = 729.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 24
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="." unique_id=1368991427]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 0
+offset_left = 430.0
+offset_top = 488.0
+offset_right = 730.0
+offset_bottom = 548.0
+theme_override_font_sizes/font_size = 24
+text = "Quit
+"

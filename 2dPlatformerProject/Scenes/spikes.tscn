@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d23mf0clqpi2a"]
+
+[ext_resource type="Texture2D" uid="uid://s4mvoiv03u47" path="res://Assets/Ruins/ai_tiles.png" id="1_a5dqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwqs2"]
+size = Vector2(225, 66)
+
+[node name="Spikes" type="Area2D" unique_id=1649663943 groups=["damage_player"]]
+collision_priority = 20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1755408969]
+texture = ExtResource("1_a5dqs")
+region_enabled = true
+region_rect = Rect2(1648, 954, 224, 69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=832591631]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_gwqs2")

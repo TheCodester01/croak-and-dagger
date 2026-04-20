@@ -42,13 +42,13 @@ public partial class Knight : Player
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta); // Call Player's physics process first
-
         Vector2 direction = Input.GetVector("left", "right", "ui_up", "ui_down"); // Get the input direction and handle the movement/deceleration.
         Vector2 velocity = Velocity;
         velocity.Y += GetGravity().Y * (float)delta; // Apply Gravity at all times
 
 
         Vector2 PreMoveVelocity = velocity;
+
 
         if (IsOnFloor())
         {
@@ -78,7 +78,6 @@ public partial class Knight : Player
             }
 
         }
-
 
         // If not standing still
         if (direction != Vector2.Zero)

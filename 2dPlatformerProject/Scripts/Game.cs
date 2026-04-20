@@ -2,6 +2,7 @@ using Godot;
 
 public partial class Game : Node2D
 {
+	static public Game Instance { get; private set; }
 
     private int player_keys;
 	public HUD hud;
