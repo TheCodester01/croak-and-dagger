@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b3h1qttx1xlhk" path="res://Assets/Frog/Idle/Idle (32x32)_row-1-column-11.png" id="13_u54sv"]
 [ext_resource type="Texture2D" uid="uid://b8i4jiofoktwl" path="res://Assets/Frog/Jump (32x32).png" id="14_ty1au"]
 [ext_resource type="AudioStream" uid="uid://d2nvcaidco51p" path="res://Assets/Audio/gargamel10-frog-sound-effect-380312.mp3" id="22_ai0vt"]
+[ext_resource type="Script" uid="uid://5sxk6qp5qukx" path="res://Scenes/Trajectory.cs" id="23_fgm6k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_udjml"]
 animations = [{
@@ -109,6 +110,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23ppf"]
 radius = 11.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fgm6k"]
+radius = 11.0
+
 [node name="Frog" type="CharacterBody2D" unique_id=680118027]
 script = ExtResource("1_yakrr")
 
@@ -128,5 +132,20 @@ shape = SubResource("CapsuleShape2D_23ppf")
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1938981649]
 stream = ExtResource("22_ai0vt")
+
+[node name="Trajectory" type="Line2D" parent="." unique_id=1358798820]
+position = Vector2(0, 8.15)
+points = PackedVector2Array(0, -1)
+width = 1.355
+script = ExtResource("23_fgm6k")
+
+[node name="TestObject" type="CharacterBody2D" parent="Trajectory" unique_id=1935772506]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trajectory/TestObject" unique_id=488912986]
+position = Vector2(0, -5.1499996)
+shape = SubResource("CapsuleShape2D_fgm6k")
+
+[node name="EndPoint" type="Sprite2D" parent="Trajectory/TestObject/CollisionShape2D" unique_id=1196884242]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

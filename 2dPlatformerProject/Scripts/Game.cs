@@ -16,19 +16,20 @@ public partial class Game : Node2D
 			hud.UpdateKeyCount();
 		}
 	}
-	static public float Sliding_Multiplier { get; private set; } = 10000.0f;
+	static public float Sliding_Multiplier { get; private set; } = 1600.0f;
 
 	public override void _Ready()
 	{
 		var frog = GetNode<Node2D>("Frog");
 		var knight = GetNode<Node2D>("Knight");
 		selected_character = GetNode<Player>($"{GameManager.Instance.SelectedCharacter}");
-		Bat.player = selected_character;
+        Bat.player = selected_character;
 		hud = GetNode<HUD>("HUD");
 
 		if (GameManager.Instance.SelectedCharacter == "Frog")
 		{
-			knight.QueueFree();
+			knight.GetNode<Camera2D>("Camera2D").Reparent(frog, false);
+            knight.QueueFree();
 		}
 		else
 		{

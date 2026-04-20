@@ -45,7 +45,6 @@ public partial class Bat : Node2D
 
 	public override void _Ready()
 	{
-
 		animation_player = GetNode<AnimationPlayer>("AnimationPlayer");
 		animated_sprite = GetNode<AnimatedSprite2D>("Area2D/AnimatedSprite2D");
 
@@ -60,13 +59,12 @@ public partial class Bat : Node2D
 
 	public override void _Process(double delta)
 	{
-		// todo: when bat is really close, play attack animation
 		if (curAttackTimer < SecondsBetweenAttack)
 		{
 			curAttackTimer += (float)delta;
 		}
 
-		if (this.GlobalPosition.DistanceTo(player.GlobalPosition) <= 150.0f)
+		if (player != null && this.GlobalPosition.DistanceTo(player.GlobalPosition) <= 150.0f)
 		{
 			if (this.GlobalPosition.DistanceTo(player.GlobalPosition) <= 50.0f)
 			{

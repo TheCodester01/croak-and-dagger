@@ -38,20 +38,6 @@ public partial class Player : CharacterBody2D
 		_hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-        if (TookDamage)
-		{
-			TimeSinceLastDamage += (float)delta;
-
-			if (TimeSinceLastDamage >= SecondsBetweenDamage)
-			{
-				TookDamage = false;
-				TimeSinceLastDamage = 0.0f;
-			}
-		}
-	}
-
 	public bool IsInKnockback()
 	{
 		return KnockbackDurationSecs > 0.0f;
@@ -126,8 +112,8 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-        // Handle fog
-        if (this.GlobalPosition.Y > fog.FogPositionY)
+		// Handle fog
+		if (this.GlobalPosition.Y > fog.FogPositionY)
         {
 			if (this.TakeDamage(true))
             {

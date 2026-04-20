@@ -14,8 +14,10 @@ uniform float curve_depth = 0.05;
 uniform float curve_x_ratio = 1.0;
 uniform float curve_x_translation = 0.5;
 
+uniform float fog_height = 2098.0;
+
 void vertex() {
-	VERTEX.y += 1944.0 * offset_ratio;
+	VERTEX.y += fog_height * offset_ratio;
 }
 
 void fragment() {

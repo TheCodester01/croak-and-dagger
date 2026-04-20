@@ -10,6 +10,9 @@ public partial class Knight : Player
     public bool jumped = false;
     private int facing_dir = 1;
 
+    private float acceleration = 1400.0f;
+    private float friction = 1800.0f;
+
     public override void _Process(double delta)
     {
         if (!(anim_sprite.IsPlaying() && anim_sprite.Animation == "hit") && !IsInKnockback())
@@ -42,13 +45,10 @@ public partial class Knight : Player
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta); // Call Player's physics process first
+
         Vector2 direction = Input.GetVector("left", "right", "ui_up", "ui_down"); // Get the input direction and handle the movement/deceleration.
         Vector2 velocity = Velocity;
         velocity.Y += GetGravity().Y * (float)delta; // Apply Gravity at all times
-
-
-        Vector2 PreMoveVelocity = velocity;
-
 
         if (IsOnFloor())
         {
@@ -82,16 +82,18 @@ public partial class Knight : Player
         // If not standing still
         if (direction != Vector2.Zero)
         {
-            velocity.X = direction.X * Speed;
+            float target_x = direction.X * Speed;
 
             if (is_sprinting)
             {
-                velocity.X *= SprintMultiplier;
+                target_x *= SprintMultiplier;
             }
+
+            velocity = velocity.MoveToward(new Vector2(target_x, velocity.Y), acceleration * (float)delta);
         }
         else
         {
-            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, friction * (float)delta);
         }
 
         if (direction.X != 0)

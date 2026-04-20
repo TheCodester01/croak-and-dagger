@@ -51,7 +51,7 @@ public partial class CharacterSelect : Control
 		var cam = GetNode<Camera2D>(
 			"SubViewportContainer/SubViewport/LevelPreview/Camera2D");
 		var panTween = CreateTween();
-		panTween.TweenProperty(cam, "position:y", 430f, 2.5f)
+		panTween.TweenProperty(cam, "position:y", 320f, 2.5f)
 				.SetEase(Tween.EaseType.InOut)
 				.SetTrans(Tween.TransitionType.Sine);
 		panTween.TweenCallback(Callable.From(

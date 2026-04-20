@@ -14,11 +14,19 @@ public partial class Frog : Player
     public int JumpPowerMaxSeconds = 1;
 
     [Export]
-    public float JumpVelocity = -800.0f;
+    public float JumpVelocity = -700.0f;
 
     private float JumpPowerElapsedTime = 0.0f;
 
-    public const float HorizontalVelocity = 150.0f;
+    public const float HorizontalVelocity = 200.0f;
+
+    private Trajectory trajectory;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        trajectory = GetNode<Trajectory>("Trajectory");
+    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -62,6 +70,20 @@ public partial class Frog : Player
             else if (Input.IsActionPressed("ui_right"))
             {
                 velocity.X = HorizontalVelocity;
+            }
+
+            trajectory.Clear();
+        }
+
+        if (Input.IsActionPressed("ui_accept") && IsOnFloor())
+        {
+            if (Input.IsActionPressed("ui_left"))
+            {
+                trajectory._update_trajectory(Trajectory.Direction.Left, JumpVelocity * this.JumpPower, GetGravity(), delta, HorizontalVelocity, GlobalPosition);
+            }
+            else if (Input.IsActionPressed("ui_right"))
+            {
+                trajectory._update_trajectory(Trajectory.Direction.Right, JumpVelocity * this.JumpPower, GetGravity(), delta, HorizontalVelocity, GlobalPosition);
             }
         }
 

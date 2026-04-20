@@ -8,7 +8,7 @@ frequency = 0.0035
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j3pkr"]
 width = 1152
-height = 1944
+height = 2098
 noise = SubResource("FastNoiseLite_5gb24")
 seamless = true
 seamless_blend_skirt = 0.852
@@ -22,15 +22,17 @@ shader_parameter/offset_ratio = 1.0
 shader_parameter/curve_depth = 0.02
 shader_parameter/curve_x_ratio = 0.495
 shader_parameter/curve_x_translation = 0.0
+shader_parameter/fog_height = 2098.0
 
 [node name="Fog" type="ParallaxBackground" unique_id=1854454188]
 layer = 2
 scroll_ignore_camera_zoom = true
 script = ExtResource("1_5gb24")
+TotalGameHeight = 2098.0
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="." unique_id=186587811]
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxLayer" unique_id=1580018891]
 material = SubResource("ShaderMaterial_ipocg")
 offset_right = 1152.0
-offset_bottom = 1944.0
+offset_bottom = 2098.0

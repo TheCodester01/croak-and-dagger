@@ -34,8 +34,9 @@ position = Vector2(281.6, -823.455)
 metadata/_edit_lock_ = true
 
 [node name="Fog" parent="." unique_id=1854454188 instance=ExtResource("12_rku1e")]
-offset = Vector2(0, -1296)
-transform = Transform2D(1, 0, 0, 1, 0, -1296)
+offset = Vector2(0, -1450)
+transform = Transform2D(1, 0, 0, 1, 0, -1450)
+TotalFogTimeSecs = 180
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="." unique_id=31237010]
 metadata/_edit_lock_ = true
@@ -50,14 +51,12 @@ position = Vector2(1152, 324)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-[node name="Frog" parent="." unique_id=680118027 node_paths=PackedStringArray("healthDisplay", "gameOver", "fog") instance=ExtResource("4_3dryh")]
-[node name="WorldBoundaryBottom" type="Area2D" parent="WorldBoundaries" unique_id=725508446 groups=["damage_player"]]
-
-[node name="WorldBoundaryBottom" type="CollisionShape2D" parent="WorldBoundaries/WorldBoundaryBottom" unique_id=1218207133]
-position = Vector2(0, 648)
+[node name="WorldBoundaryBottom2" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1218207133]
+position = Vector2(613, 649.695)
 shape = SubResource("WorldBoundaryShape2D_wrm1d")
 
-position = Vector2(237, 429)
+[node name="Frog" parent="." unique_id=680118027 node_paths=PackedStringArray("healthDisplay", "gameOver", "fog") groups=["Player"] instance=ExtResource("4_3dryh")]
+position = Vector2(261, 450)
 healthDisplay = NodePath("../HUD/Health Display")
 gameOver = NodePath("../GameOver")
 fog = NodePath("../Fog")
@@ -76,10 +75,8 @@ limit_top = -1604
 limit_right = 1150
 limit_bottom = 648
 
-[node name="Bat" parent="." unique_id=1947315516 node_paths=PackedStringArray("frog_player", "knight_player") instance=ExtResource("9_h4fw4")]
+[node name="Bat" parent="." unique_id=1947315516 instance=ExtResource("9_h4fw4")]
 position = Vector2(629, 273)
-frog_player = NodePath("../Frog")
-knight_player = NodePath("../Knight")
 
 [node name="HUD" parent="." unique_id=170314823 instance=ExtResource("5_hud")]
 layer = 3

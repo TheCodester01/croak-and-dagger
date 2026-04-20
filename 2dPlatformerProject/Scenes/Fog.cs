@@ -22,6 +22,8 @@ public partial class Fog : ParallaxBackground
 	{
         ShaderMaterial = (ShaderMaterial)((ColorRect)this.GetNode("ParallaxLayer/ColorRect")).Material;
         FogPositionY = this.Offset.Y + TotalGameHeight;
+
+        ShaderMaterial.SetShaderParameter("fog_height", TotalGameHeight);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +31,7 @@ public partial class Fog : ParallaxBackground
 	{
         elapsed += delta;
 
-		double offset_ratio = Mathf.Lerp(1.0f, 0.0f, elapsed / TotalFogTimeSecs);
+		double offset_ratio = Mathf.Max(Mathf.Lerp(1.0f, 0.0f, elapsed / TotalFogTimeSecs), 0.0f);
 
         ShaderMaterial.SetShaderParameter("offset_ratio", offset_ratio);
 
