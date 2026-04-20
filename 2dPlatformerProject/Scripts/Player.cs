@@ -8,7 +8,7 @@ public partial class Player : CharacterBody2D
 	[Export]
     private int SecondsBetweenFogDamage = 3;
     
-	const float KnockbackVelocityY = -200.0f;
+	const float KnockbackVelocityY = -125.0f;
 
 	[Export]
 	private HealthDisplay healthDisplay;
@@ -95,7 +95,7 @@ public partial class Player : CharacterBody2D
             if (TakeDamage())
             {
                 var knockback_dir = (this.GlobalPosition - area.GlobalPosition).Normalized();
-                ApplyKnockback(knockback_dir, 300.0f, 0.2f);
+                ApplyKnockback(knockback_dir, 125.0f, 0.2f);
             }
 		}
 		else if (area.IsInGroup("heart"))

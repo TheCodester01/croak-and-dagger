@@ -20,6 +20,9 @@ public partial class Frog : Player
 
     public const float HorizontalVelocity = 200.0f;
 
+    [Export]
+    public float MomentumConservation = 0.3f;
+
     private Trajectory trajectory;
 
     public override void _Ready()
@@ -114,6 +117,30 @@ public partial class Frog : Player
         else
             Velocity = GetKnockback();
 
+        Vector2 preVelocity = Velocity;
         MoveAndSlide();
+
+        if (!IsInKnockback())
+        {
+            for (int i = 0; i < GetSlideCollisionCount(); i++)
+            {
+                var collision = GetSlideCollision(i);
+                Vector2 normal = collision.GetNormal();
+
+                if (normal.Dot(Vector2.Up) > 0.7f) continue; // ignore floor
+
+                Vector2 lostVelocity = preVelocity - Velocity;
+
+                if (Mathf.Abs(normal.X) > 0.7f) // wall hit — redirect horizontal speed upward
+                {
+                    Velocity += new Vector2(0, -Mathf.Abs(lostVelocity.X) * MomentumConservation);
+                }
+                else if (normal.Y > 0.7f) // ceiling hit — redirect upward speed horizontally
+                {
+                    float sign = preVelocity.X >= 0 ? 1f : -1f;
+                    Velocity += new Vector2(sign * Mathf.Abs(lostVelocity.Y) * MomentumConservation, 0);
+                }
+            }
+        }
     }
 }

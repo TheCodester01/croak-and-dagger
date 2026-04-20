@@ -10,6 +10,9 @@ public partial class Fog : ParallaxBackground
 	private int TotalFogTimeSecs = 120;
 
 	[Export]
+	private float FogStartDelaySecs = 20.0f;
+
+	[Export]
 	private float TotalGameHeight = 1944.0f;
 
     private double elapsed = 0.0;
@@ -31,7 +34,9 @@ public partial class Fog : ParallaxBackground
 	{
         elapsed += delta;
 
-		double offset_ratio = Mathf.Max(Mathf.Lerp(1.0f, 0.0f, elapsed / TotalFogTimeSecs), 0.0f);
+		double activeElapsed = Math.Max(elapsed - FogStartDelaySecs, 0.0);
+		double activeFogTime = TotalFogTimeSecs - FogStartDelaySecs;
+		double offset_ratio = Mathf.Max(Mathf.Lerp(1.0f, 0.0f, activeElapsed / activeFogTime), 0.0f);
 
         ShaderMaterial.SetShaderParameter("offset_ratio", offset_ratio);
 
