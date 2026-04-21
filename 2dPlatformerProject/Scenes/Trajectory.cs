@@ -43,25 +43,16 @@ public partial class Trajectory : Line2D
 		Visible = false;
     }
 
-	public void _update_trajectory(Direction direction, float jumpForce, Vector2 gravity, double delta, float horizontalVelocity, Vector2 startPos)
+	public void _update_trajectory(float jumpForce, Vector2 gravity, double delta, float horizontalVelocity, Vector2 startPos)
 	{
 		linePos = startPos;
 		testCollision.GlobalPosition = linePos;
 
 		Vector2 velocity = testCollision.Velocity;
-		
-		velocity.Y = jumpForce;
-        testCollision.Velocity = velocity;
 
-        if (direction == Direction.Left)
-        {
-            velocity.X = -horizontalVelocity;
-			testCollision.Velocity = velocity;
-        } else
-		{
-			velocity.X = horizontalVelocity;
-            testCollision.Velocity = velocity;
-        }
+        velocity.X = horizontalVelocity;
+        velocity.Y = jumpForce;
+        testCollision.Velocity = velocity;
 
 		for (int i = 0; i < GetPointCount(); ++i)
 		{

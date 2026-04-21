@@ -3,9 +3,10 @@ using System;
 
 public partial class Frog : Player
 {
+    private Vector2 JumpPower = Vector2.Zero;
 
     [Export]
-    public float JumpPower = 0.0f;
+    public float JumpScaleSpeed = 200.0f;
 
     [Export]
     public float JumpPowerMinimum = 0.3f;
@@ -14,11 +15,11 @@ public partial class Frog : Player
     public int JumpPowerMaxSeconds = 1;
 
     [Export]
-    public float JumpVelocity = -700.0f;
+    public float JumpVelocity = -800.0f;
 
     private float JumpPowerElapsedTime = 0.0f;
 
-    public const float HorizontalVelocity = 200.0f;
+    public const float HorizontalVelocity = 400.0f;
 
     [Export]
     public float MomentumConservation = 0.3f;
@@ -29,6 +30,7 @@ public partial class Frog : Player
     {
         base._Ready();
         trajectory = GetNode<Trajectory>("Trajectory");
+        JumpPower = new Vector2(0.0f, JumpPowerMinimum * JumpVelocity);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -48,7 +50,7 @@ public partial class Frog : Player
         {
             velocity.X = 0;
 
-            if (Input.IsActionPressed("ui_accept"))
+            /*if (Input.IsActionPressed("jump"))
             {
                 float t = Mathf.Clamp(this.JumpPowerElapsedTime / this.JumpPowerMaxSeconds, 0.0f, 1.0f);
                 this.JumpPower = Mathf.Lerp(this.JumpPowerMinimum, 1.0f, t);
@@ -58,39 +60,72 @@ public partial class Frog : Player
             else
             {
                 this.JumpPowerElapsedTime = 0;
+            }*/
+
+            bool jump_power_changed = false;
+
+            if (Input.IsActionPressed("left"))
+            {
+                this.JumpPower = this.JumpPower.MoveToward(new Vector2(-HorizontalVelocity, JumpPower.Y), JumpScaleSpeed * (float)delta);
+                jump_power_changed = true;
+            }
+
+            if (Input.IsActionPressed("right"))
+            {
+                this.JumpPower = this.JumpPower.MoveToward(new Vector2(HorizontalVelocity, JumpPower.Y), JumpScaleSpeed * (float)delta);
+                jump_power_changed = true;
+            }
+
+            if (Input.IsActionPressed("ui_up"))
+            {
+                this.JumpPower = this.JumpPower.MoveToward(new Vector2(JumpPower.X, JumpVelocity), JumpScaleSpeed * (float)delta);
+                jump_power_changed = true;
+            }
+
+            if (Input.IsActionPressed("ui_down"))
+            {
+                this.JumpPower = this.JumpPower.MoveToward(new Vector2(JumpPower.X, JumpPowerMinimum * JumpVelocity), JumpScaleSpeed * (float)delta);
+                jump_power_changed = true;
+            }
+
+            if (jump_power_changed && JumpPower.X != 0.0f)
+            {
+                trajectory._update_trajectory(JumpPower.Y, GetGravity(), delta, JumpPower.X, GlobalPosition);
             }
         }
 
         // Handle Jump.
-        if (Input.IsActionJustReleased("ui_accept") && IsOnFloor())
+        if (Input.IsActionJustReleased("jump") && IsOnFloor())
         {
-            velocity.Y = JumpVelocity * this.JumpPower;
+            velocity = this.JumpPower;
+            this.JumpPower = new Vector2(0.0f, JumpPowerMinimum * JumpVelocity);
+            /*velocity.Y = JumpVelocity * this.JumpPower;
 
-            if (Input.IsActionPressed("ui_left"))
+            if (Input.IsActionPressed("left"))
             {
                 velocity.X = -HorizontalVelocity;
             }
-            else if (Input.IsActionPressed("ui_right"))
+            else if (Input.IsActionPressed("right"))
             {
                 velocity.X = HorizontalVelocity;
-            }
+            }*/
 
             trajectory.Clear();
         }
 
-        if (Input.IsActionPressed("ui_accept") && IsOnFloor())
+        /*if (Input.IsActionPressed("jump") && IsOnFloor())
         {
-            if (Input.IsActionPressed("ui_left"))
+            if (Input.IsActionPressed("left"))
             {
                 trajectory._update_trajectory(Trajectory.Direction.Left, JumpVelocity * this.JumpPower, GetGravity(), delta, HorizontalVelocity, GlobalPosition);
             }
-            else if (Input.IsActionPressed("ui_right"))
+            else if (Input.IsActionPressed("right"))
             {
                 trajectory._update_trajectory(Trajectory.Direction.Right, JumpVelocity * this.JumpPower, GetGravity(), delta, HorizontalVelocity, GlobalPosition);
             }
-        }
+        }*/
 
-        Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        Vector2 direction = Input.GetVector("left", "right", "ui_up", "ui_down");
 
         if (!(anim_sprite.IsPlaying() && anim_sprite.Animation == "hit"))
         {
