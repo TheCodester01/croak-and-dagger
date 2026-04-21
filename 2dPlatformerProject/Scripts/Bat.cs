@@ -64,7 +64,7 @@ public partial class Bat : Node2D
 			curAttackTimer += (float)delta;
 		}
 
-		if (player != null && this.GlobalPosition.DistanceTo(player.GlobalPosition) <= 150.0f)
+		if (player != null && IsInstanceValid(player) && this.GlobalPosition.DistanceTo(player.GlobalPosition) <= 150.0f)
 		{
 			if (this.GlobalPosition.DistanceTo(player.GlobalPosition) <= 50.0f)
 			{
