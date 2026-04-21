@@ -12,12 +12,12 @@ public partial class MainMenu : Control
 
 	private void OnPlay()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/CharacterSelect.tscn");
+		GetTree().ChangeSceneToPacked(SplashScreen.character_select_scene);
 	}
 
 	private void OnSettings()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/Settings.tscn");
+		GetTree().ChangeSceneToPacked(SplashScreen.settings_scene);
 	}
 
 	private void OnQuit()

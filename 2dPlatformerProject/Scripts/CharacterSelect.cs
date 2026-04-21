@@ -1,10 +1,10 @@
 using Godot;
 
 public partial class CharacterSelect : Control
-{
+{    
 	public override void _Ready()
-	{
-        GetNode<Button>("VBox/KnightButton").Pressed += OnKnightSelected;
+	{        
+		GetNode<Button>("VBox/KnightButton").Pressed += OnKnightSelected;
 		GetNode<Button>("VBox/FrogButton").Pressed += OnFrogSelected;
 		GetNode<Button>("VBox/BackButton").Pressed += OnBack;
 	}
@@ -27,7 +27,7 @@ public partial class CharacterSelect : Control
 
 	private void OnBack()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
+		GetTree().ChangeSceneToPacked(SplashScreen.main_menu);
 	}
 
 	private void DisableButtons()
@@ -55,6 +55,6 @@ public partial class CharacterSelect : Control
 				.SetEase(Tween.EaseType.InOut)
 				.SetTrans(Tween.TransitionType.Sine);
 		panTween.TweenCallback(Callable.From(
-			() => GetTree().ChangeSceneToFile("res://Scenes/game.tscn")));
+			() => GetTree().ChangeSceneToPacked(SplashScreen.game_scene)));
 	}
 }
