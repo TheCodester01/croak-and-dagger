@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://lhuj3m88633k"]
+
+[ext_resource type="Script" uid="uid://bs3v4s0irefq" path="res://Scripts/SplashScreen.cs" id="1_h5jmx"]
+[ext_resource type="Texture2D" uid="uid://b4dqa57g65c8p" path="res://splash_screen.png" id="1_wwf30"]
+
+[node name="SplashScreen" type="Node" unique_id=2031504064]
+script = ExtResource("1_h5jmx")
+
+[node name="Background" type="ColorRect" parent="." unique_id=482185344]
+z_index = -1
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Image" type="TextureRect" parent="." unique_id=2131310055]
+offset_right = 1223.7083
+offset_bottom = 683.0
+texture = ExtResource("1_wwf30")
+expand_mode = 1
