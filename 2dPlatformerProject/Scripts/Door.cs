@@ -7,7 +7,7 @@ public partial class Door : Area2D
     Timer timer;
     Label label;
 
-    Game game;
+    Game game = Game.Instance;
 
     public override void _Ready()
     {
@@ -15,7 +15,7 @@ public partial class Door : Area2D
         label = GetNode<Label>("Label");
 
         BodyEntered += OnBodyEntered;
-        game = (Game)GetParent().GetParent().GetParent();
+        //game = (Game)GetParent().GetParent();
     }
     public void OnBodyEntered(Node2D body)
 	{

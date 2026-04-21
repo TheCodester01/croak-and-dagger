@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://whntob6vyyus" path="res://Scripts/Game.cs" id="7_game"]
 [ext_resource type="PackedScene" uid="uid://do4g16koaxdq7" path="res://Scenes/health_display.tscn" id="7_ldgsr"]
 [ext_resource type="PackedScene" path="res://Scenes/GameOver.tscn" id="8_govr"]
-[ext_resource type="PackedScene" uid="uid://cbbtgdh657nh1" path="res://Scenes/bat.tscn" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://cjn37fivam0br" path="res://Scenes/fog.tscn" id="12_rku1e"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wrm1d"]
@@ -74,9 +73,6 @@ limit_left = 0
 limit_top = -1604
 limit_right = 1150
 limit_bottom = 648
-
-[node name="Bat" parent="." unique_id=1947315516 instance=ExtResource("9_h4fw4")]
-position = Vector2(629, 273)
 
 [node name="HUD" parent="." unique_id=170314823 instance=ExtResource("5_hud")]
 layer = 3
