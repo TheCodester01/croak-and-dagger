@@ -30,3 +30,4 @@ mono_crash.*.json
 2dPlatformerProject/2D-Platformer-Project.csproj.user
 2D-platformer-project/2dPlatformerProject/.vs/2D-PLATFORMER-PROJECT/CopilotIndices
 *.import
+2dPlatformerProject/export_presets.cfg
