@@ -20,6 +20,8 @@ public partial class Game : Node2D
 
 	public override void _Ready()
 	{
+		Instance = this;
+
         var frog = GetNode<Node2D>("Frog");
 		var knight = GetNode<Node2D>("Knight");
 		selected_character = GetNode<Player>($"{GameManager.Instance.SelectedCharacter}");
