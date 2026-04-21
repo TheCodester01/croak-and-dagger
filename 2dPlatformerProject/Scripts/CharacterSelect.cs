@@ -4,7 +4,7 @@ public partial class CharacterSelect : Control
 {
 	public override void _Ready()
 	{
-		GetNode<Button>("VBox/KnightButton").Pressed += OnKnightSelected;
+        GetNode<Button>("VBox/KnightButton").Pressed += OnKnightSelected;
 		GetNode<Button>("VBox/FrogButton").Pressed += OnFrogSelected;
 		GetNode<Button>("VBox/BackButton").Pressed += OnBack;
 	}

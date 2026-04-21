@@ -8,7 +8,7 @@ public partial class GameManager : Node
 	public float ElapsedTime { get; set; } = 0.0f;
 	public bool IsPaused { get; set; } = false;
 
-	private float _musicVolume = 0.5f;
+	private float _musicVolume = 0.25f;
 	public float MusicVolume
 	{
 		get => _musicVolume;
